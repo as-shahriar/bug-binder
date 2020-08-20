@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/home.css'%}" />
+    <title>Bug Binder</title>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper cyan darken-4">
+        <div class="container">
+          <a href="#" class="brand-logo"><span>Bug Binder</span></a>
+          <a class="sidenav-trigger" href="#" data-target="mobile-links"
+            ><i class="material-icons left">menu</i></a
+          >
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              <a href="#modal1" class="modal-trigger">
+                <span>Login</span><i class="material-icons left">account_box</i>
+              </a>
+            </li>
+            <li>
+              <a href="#modal2" class="modal-trigger white-text"
+                ><i class="material-icons left">local_hospital</i
+                ><span>Sign up</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <ul class="sidenav cyan darken-4" id="mobile-links">
+      <li>
+        <a href="#" class="brand-logo white-text"><span>Bug Binder</span></a>
+      </li>
+      <li>
+        <a href="#modal1" class="modal-trigger white-text">
+          <span>Login</span
+          ><i class="material-icons left white-text">account_box</i>
+        </a>
+      </li>
+      <li>
+        <a href="#modal2" class="modal-trigger white-text"
+          ><i class="material-icons left white-text">local_hospital</i
+          ><span>Sign up</span></a
+        >
+      </li>
+    </ul>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content" style="overflow: hidden;">
+        <div class="modal-close"><i class="material-icons teal-text">close</i></div>
+        <div
+          style="display: flex; justify-content: center; align-content: center;"
+        >
+          <i class="material-icons left teal-text">account_box</i>
+          <h5 class="teal-text" style="margin: 0;">
+            Login
+          </h5>
+        </div>
+
+        <div class="row" >
+          <div class="col s12 l10 offset-l1">
+            <div class="input-field">
+              <i class="material-icons prefix teal-text">mail</i>
+              <input id="email" type="text" class="validate" />
+              <label for="email">Email Address</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 l10 offset-l1">
+            <div class="input-field">
+              <i class="material-icons prefix teal-text">lock</i>
+              <input id="password" type="password" class="validate" />
+              <label for="password">Password</label>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="row"
+          style="display: flex; justify-content: center; align-items: center;"
+        >
+          <a
+            class="ceneter teal-text"
+            style="cursor: pointer; margin-right: 1rem;"
+            >Forget Password?</a
+          >
+          <a class="waves-effect waves-light btn">Login</a>
+        </div>
+      </div>
+    
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal2" class="modal">
+      <div class="modal-content" style="overflow: hidden;">
+        <div class="modal-close"><i class="material-icons teal-text">close</i></div>
+        <div
+          style="display: flex; justify-content: center; align-content: center;"
+        >
+          <i class="material-icons left teal-text">local_hospital</i>
+          <h5 class="teal-text" style="margin: 0;">
+            Sign up
+          </h5>
+         
+        </div>
+        <div class="row" >
+          <div class="col s12 l10 offset-l1">
+            <div class="input-field">
+              <i class="material-icons prefix teal-text">account_box</i>
+              <input id="name" type="text" class="validate" />
+              <label for="name">Full Name</label>
+            </div>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col s12 l10 offset-l1">
+            <div class="input-field">
+              <i class="material-icons prefix teal-text">mail</i>
+              <input id="sign-email" type="text" class="validate" />
+              <label for="sign-email">Email Address</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 l10 offset-l1">
+            <div class="input-field">
+              <i class="material-icons prefix teal-text">lock</i>
+              <input id="sign-password" type="password" class="validate" />
+              <label for="sign-password">Password</label>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="row"
+          style="display: flex; justify-content: center; margin-bottom:0;"
+        >
+          <a class="waves-effect waves-light btn">Sign up</a>
+        </div>
+      </div>
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".sidenav");
+        var instances = M.Sidenav.init(elems);
+        var elems = document.querySelectorAll(".modal");
+        var instances = M.Modal.init(elems);
+      });
+    </script>
+  </body>
+</html>

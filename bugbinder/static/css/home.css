@@ -1,0 +1,26 @@
+.modal {
+  width: 33rem !important;
+}
+
+.modal-close {
+  display: none;
+}
+
+.row {
+  margin-top: 0;
+  margin-bottom: 0.5rem !important;
+}
+
+@media (max-width: 650px) {
+  .modal {
+    width: 80% !important;
+  }
+  .modal-close {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.3rem;
+    opacity: 0.8;
+  }
+}
