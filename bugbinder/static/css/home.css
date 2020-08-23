@@ -1,3 +1,28 @@
+:root {
+  --color-primary: #060024;
+  --color-red: #f43b45;
+  --color-green: #6a9958;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-green);
+}
+
+.primary-color {
+  background-color: var(--color-primary);
+}
+.text-red {
+  color: var(--color-red);
+}
+.text-green {
+  color: var(--color-green) !important;
+}
+
+.primary-color-text {
+  color: var(--color-primary);
+}
+
 .modal {
   width: 33rem !important;
 }
@@ -11,6 +36,73 @@
   margin-bottom: 0.5rem !important;
 }
 
+#nav-close {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  transition: all 0.2s ease-out;
+}
+
+#nav-close:hover {
+  transform: scale(1.05);
+}
+body {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.main {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+.main > h5 {
+  margin: 0;
+  margin-right: 6rem;
+  color: var(--color-green);
+  text-shadow: 2px 2px 4px #111111;
+}
+.box-title {
+  display: flex;
+  align-items: center;
+  margin-right: 6rem;
+}
+.box-title > h1 {
+  display: inline;
+  margin-right: 1rem;
+  color: var(--color-red);
+  text-shadow: 2px 2px 4px #111111;
+}
+
+.box-title > img {
+  width: 5rem;
+}
+
+#nav-title {
+  margin-left: 0.4rem;
+}
+
+.sidenav li:hover {
+  background-color: #0f0835;
+  cursor: pointer;
+}
+
+input[type="text"]:not(.browser-default):focus,
+input[type="password"]:not(.browser-default):focus {
+  border-bottom: 1px solid var(--color-green) !important;
+  box-shadow: 0 1px 0 0 var(--color-green) !important;
+}
+
+.btn,
+.btn:hover {
+  background-color: var(--color-red);
+}
+
 @media (max-width: 650px) {
   .modal {
     width: 80% !important;
@@ -22,5 +114,27 @@
     right: 0;
     padding: 0.3rem;
     opacity: 0.8;
+  }
+  #nav-title {
+    font-size: 1.4rem;
+  }
+  .main > h5 {
+    font-size: 1.3rem;
+    margin: 0;
+  }
+
+  .box-title > h1 {
+    font-size: 2.2rem;
+    margin: 1rem;
+  }
+  .box-title > img {
+    width: 3rem;
+  }
+  .box-title {
+    margin: 0;
+    flex-direction: column-reverse;
+  }
+  .main {
+    align-items: center;
   }
 }
