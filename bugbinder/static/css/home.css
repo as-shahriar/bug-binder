@@ -124,11 +124,11 @@ input[type="password"]:not(.browser-default):focus {
   }
 
   .box-title > h1 {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     margin: 1rem;
   }
   .box-title > img {
-    width: 3rem;
+    width: 10rem;
   }
   .box-title {
     margin: 0;
