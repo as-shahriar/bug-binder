@@ -23,9 +23,12 @@
   color: var(--color-primary);
 }
 
-
-a, a:visited, a:focus, a:active, a:hover{
-    outline:0 none !important;
+a,
+a:visited,
+a:focus,
+a:active,
+a:hover {
+  outline: 0 none !important;
 }
 
 .modal {
@@ -106,6 +109,15 @@ input[type="password"]:not(.browser-default):focus {
 .btn,
 .btn:hover {
   background-color: var(--color-red);
+}
+
+.error {
+  background-color: var(--color-red);
+  text-align: center;
+  color: #fff;
+  border-radius: 1rem;
+  margin-top: 0.8rem;
+  opacity: 0.8;
 }
 
 @media (max-width: 650px) {
