@@ -3,6 +3,7 @@
   align-items: center;
   padding: 1rem;
   color: var(--color-blue-light);
+  margin-bottom: 1rem;
 }
 
 .content-title > h1 {
@@ -18,7 +19,7 @@
   margin: 0 2rem 0 2rem;
 }
 .box {
-  margin: 1rem;
+  margin-bottom: 2rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -83,4 +84,10 @@
 }
 .done-color {
   background-color: #2ecc71;
+}
+
+@media (max-width: 550px) {
+  .content-title {
+    justify-content: center;
+  }
 }
