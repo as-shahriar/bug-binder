@@ -18,6 +18,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link rel="stylesheet" href="{%static 'css/colors.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/base.css'%}" />
     {%block css%}{%endblock%}
 
     <title>{%block title%}{%endblock%}</title>
@@ -45,7 +46,31 @@
       </li>
     </ul>
 
-    {% block body%}{%endblock%}
+    <div class="main">
+      <div class="left">
+        <div class="top-box">
+          <img src="{%static 'img/bug.svg' %}" />
+          <h1>Bug Binder</h1>
+        </div>
+        <ul class="menu">
+          <a href="#"
+            ><li>
+              <i class="material-icons">account_circle</i>Asif Shahriar
+            </li></a
+          >
+          <a href="#"
+            ><li><i class="material-icons">dashboard</i>Dashboard</li></a
+          >
+          <a href="#"
+            ><li><i class="material-icons">details</i>Tasks</li></a
+          >
+          <a href="#"
+            ><li><i class="material-icons">exit_to_app</i>Logout</li></a
+          >
+        </ul>
+      </div>
+      <div class="right">{%block body%}{%endblock%}</div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
