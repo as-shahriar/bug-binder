@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="theme-color" content="#0c1928" />
     <!--Import Google Icon Font-->
     <link
       rel="shortcut icon"
@@ -28,22 +29,19 @@
   </head>
 
   <body>
-    <ul class="sidenav cyan darken-4" id="mobile-links">
-      <li>
-        <a href="#" class="brand-logo white-text"><span>Bug Binder</span></a>
-      </li>
-      <li>
-        <a href="#" class="white-text">
-          <span>Login</span
-          ><i class="material-icons left white-text">account_box</i>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="white-text"
-          ><i class="material-icons left white-text">local_hospital</i
-          ><span>Sign up</span></a
-        >
-      </li>
+    <ul class="menu sidenav" id="mobile-links">
+      <a href="#"
+        ><li><i class="material-icons">account_circle</i>Asif Shahriar</li></a
+      >
+      <a href="#"
+        ><li><i class="material-icons">dashboard</i>Dashboard</li></a
+      >
+      <a href="#"
+        ><li><i class="material-icons">details</i>Tasks</li></a
+      >
+      <a href="#"
+        ><li><i class="material-icons">exit_to_app</i>Logout</li></a
+      >
     </ul>
 
     <div class="main">
@@ -69,7 +67,18 @@
           >
         </ul>
       </div>
-      <div class="right">{%block body%}{%endblock%}</div>
+      <div class="right">
+        <div class="top-mobile">
+          <a
+            class="sidenav-trigger menu-mobile"
+            href="#"
+            data-target="mobile-links"
+            ><i class="material-icons white-text">menu</i></a
+          >
+          <h1>Bug Binder</h1>
+        </div>
+        <div class="content">{%block body%}{%endblock%}</div>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
