@@ -115,7 +115,7 @@ input[type="password"]:not(.browser-default):focus {
   background-color: var(--color-red);
   text-align: center;
   color: #fff;
-  border-radius: 1rem;
+  border-radius: 5px;
   margin-top: 0.8rem;
   opacity: 0.8;
 }
