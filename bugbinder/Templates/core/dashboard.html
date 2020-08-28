@@ -1,5 +1,29 @@
-{%extends 'base.html'%} {%block title%}Bug Binder | Dashboard{%endblock%}
-{%block body%}
-<div class="main"></div>
+{%extends 'base.html'%}{% load static %} {%block title%}Bug Binder |
+Dashboard{%endblock%} {%block css%}
+<link rel="stylesheet" href="{% static 'css/dashboard.css'%}" />
+{%endblock%} {%block body%}
+<div class="main">
+  <div class="left">
+    <div class="top-box">
+      <img src="{%static 'img/bug.svg' %}" />
+      <h1>Bug Binder</h1>
+    </div>
+    <ul class="menu">
+      <a href="#"
+        ><li><i class="material-icons">account_circle</i>Asif Shahriar</li></a
+      >
+      <a href="#"
+        ><li><i class="material-icons">dashboard</i>Dashboard</li></a
+      >
+      <a href="#"
+        ><li><i class="material-icons">details</i>Tasks</li></a
+      >
+      <a href="#"
+        ><li><i class="material-icons">exit_to_app</i>Logout</li></a
+      >
+    </ul>
+  </div>
+  <div class="right"></div>
+</div>
 
 {%endblock%}

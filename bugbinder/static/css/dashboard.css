@@ -1,0 +1,57 @@
+.main {
+  display: flex;
+}
+body {
+  background-color: var(--color-black);
+}
+.left {
+  width: 18rem;
+  height: 100vh;
+  background-color: var(--color-dark-blue);
+  box-shadow: 1px 2px 2px black;
+}
+
+.top-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.top-box > img {
+  max-width: 2.5rem;
+  margin-right: 1rem;
+}
+.top-box > h1 {
+  font-size: 2rem !important;
+  color: white !important;
+  margin: 0;
+}
+
+.menu {
+  padding-left: 2rem;
+}
+.menu li {
+  display: flex;
+  color: white;
+  font-size: 1.5rem;
+  align-items: center;
+  padding: 1rem 0;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.menu li:hover {
+  background-color: var(--color-blue-dark);
+}
+
+.menu li i {
+  margin-right: 1rem;
+  margin-left: 2rem;
+}
+
+.right {
+  min-height: 100vh;
+}
