@@ -1,2 +1,42 @@
 {%extends 'base.html'%}{% load static %} {%block title%}Bug Binder |
-Dashboard{%endblock%} {%block css%} {%endblock%} {%block body%} {%endblock%}
+Dashboard{%endblock%} {%block css%}
+<link rel="stylesheet" href="{% static 'css/dashboard.css'%}" /> {%endblock%}
+{%block body%}
+<div class="content-title">
+  <i class="material-icons">dashboard</i>
+  <h1>Dashboard</h1>
+</div>
+
+<div class="row boxs">
+  {% for i in '01234567891231546548798465435'|make_list%}
+  <!-- box starts -->
+  <div class="col l4 m12 s12">
+    <div class="box">
+      <div class="box-background">
+        <h6>Project Name</h6>
+        <div class="box-bottom">
+          <div class="items">
+            <div>
+              <div class="box-item bug bug-color" title="New Bugs">
+                <i class="material-icons">bug_report</i><span>202</span>
+              </div>
+              <div
+                class="box-item assigned assigned-color"
+                title="Assigned Bugs"
+              >
+                <i class="material-icons">build</i><span>202</span>
+              </div>
+            </div>
+            <div class="box-item done done-color" title="Fixed Bugs">
+              <i class="material-icons">beenhere</i><span>202</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- box ends -->
+  {%endfor%}
+</div>
+
+{%endblock%}
