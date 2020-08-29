@@ -1,0 +1,123 @@
+.boxs {
+  margin: 0 2rem 0 2rem;
+}
+.box {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box-background {
+  position: relative;
+  width: 540px;
+  height: 338px;
+  border-top-left-radius: 1.2rem;
+  border-top-right-radius: 1.2rem;
+  background-color: var(--color-blue-light);
+  box-shadow: 0px 0px 6px #0000009c;
+  transition: all 0.2s ease-out;
+}
+.top-section {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  margin-top: 0.6rem;
+}
+
+.box-background > h6 {
+  text-align: center;
+  font-size: 1.4rem;
+}
+.box-bottom {
+  position: absolute;
+  bottom: 0;
+  height: calc(100% - 3rem);
+  width: 100%;
+  background-color: var(--color-blue-dark);
+  display: flex;
+}
+.left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.left-section > img {
+  width: 12rem;
+  border-radius: 50%;
+  margin: 0 1.8rem 1rem 1.8rem;
+}
+.socials {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.socials a:first-child {
+  margin-right: 1rem;
+}
+.socials a i {
+  color: white !important;
+  font-size: 1.5rem;
+  padding: 0.2rem;
+  cursor: pointer;
+
+  text-shadow: 1px 1px 1px black;
+}
+
+.right-section {
+  /* background-color: rgb(35, 117, 10); */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+}
+.info-field {
+  font-size: 1.5rem;
+  margin-right: 4rem;
+  margin-top: 0.6rem;
+}
+.info-field > i {
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 550px) {
+  .top-section {
+    margin-left: 0;
+    justify-content: center;
+  }
+  .box {
+    height: 100%;
+    align-items: flex-start;
+    margin: 0rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .box-background {
+    position: relative;
+    width: 88%;
+    height: 542px;
+  }
+  .box-bottom {
+    flex-direction: column;
+  }
+  .left-section {
+    margin-top: 1rem;
+  }
+  .right-section {
+    align-items: center;
+    margin: 0;
+  }
+  .info-field {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 0;
+    margin-top: 0.6rem;
+  }
+  .info-field i {
+    margin-right: 0.5rem;
+  }
+}

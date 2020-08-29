@@ -8,3 +8,13 @@
   --color-black: #181623;
   --color-dark-blue: #0c1928;
 }
+
+.mgreen {
+  color: #2ecc71;
+}
+.mred {
+  color: #c70039;
+}
+.myellow {
+  color: #f5b041;
+}
