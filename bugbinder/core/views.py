@@ -7,3 +7,7 @@ def dashboard(request):
 
 def userView(request):
     return render(request, 'core/user.html')
+
+
+def profileView(request):
+    return render(request, 'core/profile.html')

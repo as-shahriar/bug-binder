@@ -1,0 +1,59 @@
+.top-section div {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  margin-top: 0.6rem;
+}
+
+.top-section {
+  margin-left: 0;
+  margin-top: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#edit-btn,
+#save-btn {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+#edit-section {
+  display: none;
+}
+
+#view-section {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  /* display: none; */
+}
+
+.info-field {
+  display: flex;
+  align-items: center;
+  margin-top: 0.1rem;
+}
+
+.info-field > input[type="text"] {
+  margin: 0 !important;
+  color: white;
+}
+
+.info-field > input[type="text"]:not(.browser-default):focus,
+.info-field > input[type="password"]:not(.browser-default):focus {
+  border-bottom: 1px solid white;
+  box-shadow: 0 1px 0 0 white;
+}
+
+.box-background {
+  height: 364px;
+}
+@media (max-width: 750px) {
+  .box-background {
+    height: 565px;
+  }
+  #view-section {
+    align-items: center;
+  }
+}

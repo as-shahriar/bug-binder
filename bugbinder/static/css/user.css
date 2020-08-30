@@ -77,13 +77,16 @@
 .info-field {
   font-size: 1.5rem;
   margin-right: 4rem;
-  margin-top: 0.6rem;
 }
 .info-field > i {
   margin-left: 0.5rem;
 }
-
-@media (max-width: 550px) {
+.right-sub {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+@media (max-width: 750px) {
   .top-section {
     margin-left: 0;
     justify-content: center;
@@ -119,5 +122,8 @@
   }
   .info-field i {
     margin-right: 0.5rem;
+  }
+  .right-sub {
+    align-items: flex-start;
   }
 }

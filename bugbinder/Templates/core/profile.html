@@ -1,0 +1,99 @@
+{%extends 'base.html'%}{% load static %} {%block title%}Bug Binder |
+Dashboard{%endblock%} {%block css%}
+<link rel="stylesheet" href="{% static 'css/user.css'%}" />
+<link rel="stylesheet" href="{% static 'css/profile.css'%}" /> {%endblock%}
+
+<!--  -->
+{%block body%}
+<div class="box">
+  <div class="box-background">
+    <div class="top-section">
+      <div>
+        <i class="material-icons">account_circle</i>
+        <h6 style="margin: 0; margin-left: 0.3rem">asifo1</h6>
+      </div>
+      <div>
+        <i class="fa fa-pencil-square-o" id="edit-btn" aria-hidden="true"></i>
+        <i
+          class="fa fa-floppy-o"
+          style="display: none"
+          id="save-btn"
+          aria-hidden="true"
+        ></i>
+      </div>
+    </div>
+    <div class="box-bottom">
+      <div class="left-section">
+        <img src="https://avatars0.githubusercontent.com/u/34039975" />
+        <div class="socials">
+          <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="right-section" id="view-section">
+        <div class="right-sub">
+          <div class="info-field">
+            Asif Shahriar<i class="fa fa-user" aria-hidden="true"></i>
+          </div>
+          <div class="info-field">
+            asif.past@il.com<i class="fa fa-envelope" aria-hidden="true"></i>
+          </div>
+          <div class="info-field">
+            01719563829<i class="fa fa-phone-square" aria-hidden="true"></i>
+          </div>
+          <div class="info-field">
+            Test BD Soft LTD.<i class="fa fa-building" aria-hidden="true"></i>
+          </div>
+          <div class="info-field" title="Assined bugs">
+            215 Assigned<i class="fa fa-bug" aria-hidden="true"></i>
+          </div>
+          <div class="info-field" title="Fixed bugs">
+            214 Fixed<i class="fa fa-bug" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-section" id="edit-section">
+        <div class="info-field">
+          <input type="text" placeholder="Full Name" /><i
+            class="fa fa-user"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div class="info-field">
+          <input type="text" placeholder="Email Address" /><i
+            class="fa fa-envelope"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div class="info-field">
+          <input type="text" placeholder="Mobile Number" /><i
+            class="fa fa-phone-square"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div class="info-field">
+          <input type="text" placeholder="Organization" /><i
+            class="fa fa-building"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div class="info-field">
+          <input type="text" placeholder="GitHub username" /><i
+            class="fa fa-github"
+            aria-hidden="true"
+          ></i>
+        </div>
+        <div class="info-field">
+          <input type="text" placeholder="Linkedin username" /><i
+            class="fa fa-linkedin"
+            aria-hidden="true"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%} {%block script %}
+<script src="{%static 'js/profile.js'%}"></script>
+{%endblock%}
