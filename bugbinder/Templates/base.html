@@ -34,6 +34,11 @@
   </head>
 
   <body>
+    <div id="preloder-background">
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
     <div class="base-error">
       Sample error messagloreme Lorem ipsum dolor sit amet consectetu Lorem
       ipsum dolor sit amet consectetur adipisicing elit. Repellendus, suscipit
@@ -108,6 +113,9 @@
       document.addEventListener("DOMContentLoaded", function () {
         var elems = document.querySelectorAll(".sidenav");
         var instances = M.Sidenav.init(elems);
+        setTimeout(function () {
+          document.getElementById("preloder-background").style.display = "none";
+        }, 2000);
       });
     </script>
     {%block script%}{%endblock%}
