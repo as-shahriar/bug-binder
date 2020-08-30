@@ -3,8 +3,15 @@
 <html>
   <head>
     <meta name="theme-color" content="#060024" />
-    <link rel="shortcut icon" href="{%static 'img/bug.svg' %}" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet"> 
+    <link
+      rel="shortcut icon"
+      href="{%static 'img/bug.svg' %}"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -23,17 +30,30 @@
   </head>
 
   <body>
-   
     <style>
-      body{
+      body {
         background-color: var(--color-primary);
-  background-image: linear-gradient(to bottom right, rgba(22, 22, 22, 0.329) , rgba(3, 3, 48, 0.322)) ,url({% static 'img/bg.jpg'%}) ;
-}
+        background-image: linear-gradient(
+            to bottom right,
+            rgba(22, 22, 22, 0.329),
+            rgba(3, 3, 48, 0.322)
+          ),
+          url("{%static 'img/bg.jpg'%}");
+      }
     </style>
+
     <nav>
-      <div class="nav-wrapper primary-color ">
+      <div class="nav-wrapper primary-color">
         <div class="container">
-          <a href="#" class="brand-logo"><div style="display: flex;align-items: center;"><img  width="35px"src="{%static 'img/bug.svg' %}"><span id="nav-title" class="text-red">Bug Binder</span></div></a>
+          <a href="#" class="brand-logo"
+            ><div style="display: flex; align-items: center">
+              <img width="35px" src="{%static 'img/bug.svg' %}" /><span
+                id="nav-title"
+                class="text-red"
+                >Bug Binder</span
+              >
+            </div></a
+          >
           <a class="sidenav-trigger" href="#" data-target="mobile-links"
             ><i class="material-icons left">menu</i></a
           >
@@ -57,7 +77,11 @@
     <ul class="sidenav primary-color" id="mobile-links">
       <li>
         <a href="#" class="brand-logo white-text"><span>Bug Binder</span></a>
-        <div id="nav-close"><a class="sidenav-close" href="#!"><i class="material-icons text-red">close</i></a></div>
+        <div id="nav-close">
+          <a class="sidenav-close" href="#!"
+            ><i class="material-icons text-red">close</i></a
+          >
+        </div>
       </li>
       <li>
         <a href="#modal1" class="modal-trigger text-green">
@@ -73,191 +97,201 @@
       </li>
     </ul>
 
-
-
     <div class="main">
       <div class="box-title">
-        
         <h1>Bug Binder</h1>
-        <img src="{%static 'img/bug.svg' %}">
+        <img src="{%static 'img/bug.svg' %}" />
       </div>
-        <h5>A Bug Tracking & Ticketing System</h5>
-        </div>
-
-
+      <h5>A Bug Tracking & Ticketing System</h5>
+    </div>
 
     <!-- Modal Structure -->
-    <div id="modal1" class="modal primary-color ">
-      <div class="modal-close"><i class="material-icons text-red">close</i></div>
-      <div class="modal-content" style="overflow: hidden;">
-       <div id="login"> 
-       <div
-         style="display: flex; justify-content: center; align-content: center;"
-       >
-         <i class="material-icons left text-green">account_box</i>
-         <h5 class="text-green" style="margin: 0;">
-           Login
-         </h5>
-       </div>
-
-      <div class="row" >
-        <div class="col s12 l10 offset-l1 error">
-            Wrong credentials. Try again.
-        </div>
+    <div id="modal1" class="modal primary-color">
+      <div class="modal-close">
+        <i class="material-icons text-red">close</i>
       </div>
-
-       <div class="row" >
-         <div class="col s12 l10 offset-l1">
-           <div class="input-field white-text">
-             <i class="material-icons prefix text-green">mail</i>
-             <input id="email" type="text" class="validate white-text" />
-             <label for="email" class="text-green">Email Address</label>
-           </div>
-         </div>
-       </div>
-       <div class="row">
-         <div class="col s12 l10 offset-l1">
-           <div class="input-field">
-             <i class="material-icons prefix text-green">lock</i>
-             <input id="password" type="password" class="validate white-text" />
-             <label for="password" class="text-green">Password</label>
-           </div>
-         </div>
-       </div>
-
-       <div
-         class="row"
-         style="display: flex; justify-content: center; align-items: center;"
-       >
-         <a class="ceneter text-green"
-           style="cursor: pointer; margin-right: 1rem;"
-           id="forget-triger"
-           >Forget Password?</a
-         >
-         <a class="waves-effect waves-light btn">Login</a>
-       </div></div>
-
-
-
-       <!-- forget -->
-        <div id="forget" style="display: none;"><div
-          style="display: flex; justify-content: center; align-content: center;"
-        >
-          <i class="material-icons left text-green">lock</i>
-          <h5 class="text-green" style="margin: 0; font-size: 1.3rem;">
-            Forget Password
-          </h5>
-        </div>
-        <div class="row" >
-          <div class="col s12 l10 offset-l1 error">
-              Wrong Email address. Try again.
+      <div class="modal-content" style="overflow: hidden">
+        <div id="login">
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-content: center;
+            "
+          >
+            <i class="material-icons left text-green">account_box</i>
+            <h5 class="text-green" style="margin: 0">Login</h5>
           </div>
-        </div>
-        <div class="row" >
-          <div class="col s12 l10 offset-l1">
-            <div class="input-field white-text">
-              <i class="material-icons prefix text-green">mail</i>
-              <input id="femail" type="text" class="validate white-text" />
-              <label for="femail" class="text-green">Email Address</label>
+
+          <div class="row">
+            <div class="col s12 l10 offset-l1 error">
+              Wrong credentials. Try again.
             </div>
           </div>
+
+          <div class="row">
+            <div class="col s12 l10 offset-l1">
+              <div class="input-field white-text">
+                <i class="material-icons prefix text-green">mail</i>
+                <input id="email" type="text" class="validate white-text" />
+                <label for="email" class="text-green">Email Address</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 l10 offset-l1">
+              <div class="input-field">
+                <i class="material-icons prefix text-green">lock</i>
+                <input
+                  id="password"
+                  type="password"
+                  class="validate white-text"
+                />
+                <label for="password" class="text-green">Password</label>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row"
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <a
+              class="ceneter text-green"
+              style="cursor: pointer; margin-right: 1rem"
+              id="forget-triger"
+              >Forget Password?</a
+            >
+            <a class="waves-effect waves-light btn">Login</a>
+          </div>
         </div>
 
-        <div
-          class="row"
-          style="display: flex; justify-content: center; align-items: center;"
-        >
-          <a
-          href="#modal1" class="modal-trigger ceneter text-green"
-          id="login-triger"
-            style="cursor: pointer; margin-right: 1rem;"
-            >Back to login</a
+        <!-- forget -->
+        <div id="forget" style="display: none">
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-content: center;
+            "
           >
-          <a class="waves-effect waves-light btn" id="reset-triger">Get Code</a>
-        </div></div>
+            <i class="material-icons left text-green">lock</i>
+            <h5 class="text-green" style="margin: 0; font-size: 1.3rem">
+              Forget Password
+            </h5>
+          </div>
+          <div class="row">
+            <div class="col s12 l10 offset-l1 error">
+              Wrong Email address. Try again.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 l10 offset-l1">
+              <div class="input-field white-text">
+                <i class="material-icons prefix text-green">mail</i>
+                <input id="femail" type="text" class="validate white-text" />
+                <label for="femail" class="text-green">Email Address</label>
+              </div>
+            </div>
+          </div>
 
+          <div
+            class="row"
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <a
+              href="#modal1"
+              class="modal-trigger ceneter text-green"
+              id="login-triger"
+              style="cursor: pointer; margin-right: 1rem"
+              >Back to login</a
+            >
+            <a class="waves-effect waves-light btn" id="reset-triger"
+              >Get Code</a
+            >
+          </div>
+        </div>
 
+        <!-- Password rest -->
+        <div id="reset" style="display: none">
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-content: center;
+            "
+          >
+            <i class="material-icons left text-green">lock_open</i>
+            <h5 class="text-green" style="margin: 0">Reset Password</h5>
+          </div>
+          <div class="row">
+            <div class="col s12 l10 offset-l1 error">
+              Wrong credentials. Try again.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 l10 offset-l1">
+              <div class="input-field white-text">
+                <i class="material-icons prefix text-green">lock</i>
+                <input id="remail" type="text" class="validate white-text" />
+                <label for="remail" class="text-green">Code</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 l10 offset-l1">
+              <div class="input-field white-text">
+                <i class="material-icons prefix text-green">vpn_key</i>
+                <input id="rpass1" type="text" class="validate white-text" />
+                <label for="rpass1" class="text-green">Password</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 l10 offset-l1">
+              <div class="input-field white-text">
+                <i class="material-icons prefix text-green">vpn_key</i>
+                <input id="rpass2" type="text" class="validate white-text" />
+                <label for="rpass2" class="text-green">Confirm Password</label>
+              </div>
+            </div>
+          </div>
 
-   <!-- Password rest -->
-   <div id="reset" style="display: none;"><div
-    style="display: flex; justify-content: center; align-content: center;"
-  >
-    <i class="material-icons left text-green">lock_open</i>
-    <h5 class="text-green" style="margin: 0;">
-      Reset Password
-    </h5>
-  </div>
-  <div class="row" >
-    <div class="col s12 l10 offset-l1 error">
-        Wrong credentials. Try again.
-    </div>
-  </div>
-  <div class="row" >
-    <div class="col s12 l10 offset-l1">
-      <div class="input-field white-text">
-        <i class="material-icons prefix text-green">lock</i>
-        <input id="remail" type="text" class="validate white-text" />
-        <label for="remail" class="text-green">Code</label>
+          <div
+            class="row"
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <a
+              href="#modal1"
+              class="modal-trigger ceneter text-green"
+              id="login-triger2"
+              style="cursor: pointer; margin-right: 1rem"
+              >Back to login</a
+            >
+            <a class="waves-effect waves-light btn">Reset</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row" >
-    <div class="col s12 l10 offset-l1">
-      <div class="input-field white-text">
-        <i class="material-icons prefix text-green">vpn_key</i>
-        <input id="rpass1" type="text" class="validate white-text" />
-        <label for="rpass1" class="text-green">Password</label>
-      </div>
-    </div>
-  </div>
-  <div class="row" >
-    <div class="col s12 l10 offset-l1">
-      <div class="input-field white-text">
-        <i class="material-icons prefix text-green">vpn_key</i>
-        <input id="rpass2" type="text" class="validate white-text" />
-        <label for="rpass2" class="text-green">Confirm Password</label>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="row"
-    style="display: flex; justify-content: center; align-items: center;"
-  >
-    <a
-    href="#modal1" class="modal-trigger ceneter text-green"
-    id="login-triger2"
-      style="cursor: pointer; margin-right: 1rem;"
-      >Back to login</a
-    >
-    <a class="waves-effect waves-light btn">Reset</a>
-  </div></div>
-
-
-      </div>
-    </div>
-
-
-     
 
     <!-- Modal Structure -->
     <div id="modal2" class="modal primary-color">
-      <div class="modal-content" style="overflow: hidden;">
-        <div class="modal-close"><i class="material-icons text-red">close</i></div>
+      <div class="modal-content" style="overflow: hidden">
+        <div class="modal-close">
+          <i class="material-icons text-red">close</i>
+        </div>
         <div
-          style="display: flex; justify-content: center; align-content: center;"
+          style="display: flex; justify-content: center; align-content: center"
         >
           <i class="material-icons left text-green">local_hospital</i>
-          <h5 class="text-green" style="margin: 0;">
-            Sign up
-          </h5>
+          <h5 class="text-green" style="margin: 0">Sign up</h5>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col s12 l10 offset-l1 error">
-              Credentials already used.
+            Credentials already used.
           </div>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col s12 l10 offset-l1">
             <div class="input-field">
               <i class="material-icons prefix text-green">account_box</i>
@@ -266,7 +300,7 @@
             </div>
           </div>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col s12 l10 offset-l1">
             <div class="input-field">
               <i class="material-icons prefix text-green">mail</i>
@@ -279,7 +313,11 @@
           <div class="col s12 l10 offset-l1">
             <div class="input-field">
               <i class="material-icons prefix text-green">lock</i>
-              <input id="sign-password" type="password" class="validate text-green" />
+              <input
+                id="sign-password"
+                type="password"
+                class="validate text-green"
+              />
               <label for="sign-password" class="text-green">Password</label>
             </div>
           </div>
@@ -287,12 +325,12 @@
 
         <div
           class="row"
-          style="display: flex; justify-content: center; margin-bottom:0;"
+          style="display: flex; justify-content: center; margin-bottom: 0"
         >
           <a class="waves-effect waves-light btn">Sign up</a>
         </div>
       </div>
- 
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 

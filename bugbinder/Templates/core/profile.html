@@ -13,6 +13,12 @@ Dashboard{%endblock%} {%block css%}
         <h6 style="margin: 0; margin-left: 0.3rem">asifo1</h6>
       </div>
       <div>
+        <a
+          href="#changePassword"
+          class="modal-trigger white-text"
+          id="passwordChange-triger"
+          >Change Password</a
+        >
         <i class="fa fa-pencil-square-o" id="edit-btn" aria-hidden="true"></i>
         <i
           class="fa fa-floppy-o"
@@ -91,6 +97,56 @@ Dashboard{%endblock%} {%block css%}
           ></i>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Password Chnage -->
+<div id="changePassword" class="modal modal-background">
+  <div class="modal-content" style="overflow: hidden">
+    <div class="row">
+      <div class="col s12 l12 error">Credentials already used.</div>
+    </div>
+    <div class="row">
+      <div class="col s12 l12">
+        <div class="input-field">
+          <i class="material-icons prefix white-text">lock</i>
+          <input id="name" type="password" class="validate white-text" />
+          <label for="name" class="white-text">Current Password</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 l12">
+        <div class="input-field">
+          <i class="material-icons prefix white-text">lock_outline</i>
+          <input id="sign-email" type="password" class="validate white-text" />
+          <label for="sign-email" class="white-text">New Password</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 l12">
+        <div class="input-field">
+          <i class="material-icons prefix white-text">lock_outline</i>
+          <input
+            id="sign-password"
+            type="password"
+            class="validate white-text"
+          />
+          <label for="sign-password" class="white-text">Confirm Password</label>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="row"
+      style="display: flex; justify-content: flex-end; margin-bottom: 0"
+    >
+      <a class="waves-effect waves-light btn red modal-close">Cancel</a>
+      <a class="waves-effect waves-light btn green" style="margin-left: 1rem"
+        >Save</a
+      >
     </div>
   </div>
 </div>

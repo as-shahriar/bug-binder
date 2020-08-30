@@ -1,3 +1,19 @@
+.modal-background {
+  background-color: var(--color-blue-dark);
+}
+.modal {
+  width: 33rem !important;
+}
+
+.error {
+  background-color: var(--color-red);
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 0.8rem;
+
+  padding: 0.4rem 2rem !important;
+}
 .top-section div {
   display: flex;
   align-items: center;
@@ -17,6 +33,10 @@
   font-size: 1.5rem;
   margin-right: 1rem;
   cursor: pointer;
+}
+#passwordChange-triger {
+  margin-right: 0.7rem;
+  display: none;
 }
 #edit-section {
   display: none;
@@ -40,10 +60,14 @@
   color: white;
 }
 
-.info-field > input[type="text"]:not(.browser-default):focus,
-.info-field > input[type="password"]:not(.browser-default):focus {
-  border-bottom: 1px solid white;
-  box-shadow: 0 1px 0 0 white;
+.info-field input[type="text"]:not(.browser-default):focus {
+  border-bottom: 1px solid white !important;
+  box-shadow: 0 1px 0 0 white !important;
+}
+input[type="text"]:not(.browser-default):focus,
+input[type="password"]:not(.browser-default):focus {
+  border-bottom: 1px solid white !important;
+  box-shadow: 0 1px 0 0 white !important;
 }
 
 .box-background {
@@ -55,5 +79,8 @@
   }
   #view-section {
     align-items: center;
+  }
+  .modal {
+    width: 80% !important;
   }
 }
