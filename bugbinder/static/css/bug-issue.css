@@ -1,0 +1,40 @@
+.container-div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box {
+  position: relative;
+  width: 80%;
+  border-top-left-radius: 1.2rem;
+  border-top-right-radius: 1.2rem;
+  background-color: var(--color-blue-light);
+  box-shadow: 0px 0px 6px #0000009c;
+  margin-top: 2rem;
+}
+.box h5 {
+  margin: 0.5rem 0 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+.box-body {
+  padding: 0.3rem 1rem;
+  background-color: var(--color-blue-dark);
+}
+.fields {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.row {
+  width: 80%;
+}
+.bug {
+  margin-bottom: 2rem;
+}
+
+textarea:not(.browser-default):focus {
+  border-bottom: 1px solid white !important;
+  box-shadow: 0 1px 0 0 white !important;
+}

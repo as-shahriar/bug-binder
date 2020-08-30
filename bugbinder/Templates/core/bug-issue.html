@@ -1,0 +1,78 @@
+{%extends 'base.html'%}{% load static %} {%block title%}Bug Binder |
+Dashboard{%endblock%} {%block css%}
+
+<link rel="stylesheet" href="{% static 'css/bug-issue.css'%}" />
+{%endblock%}
+
+<!--  -->
+{%block body%}
+<div class="container-div">
+  <div class="box">
+    <h5>Project Name</h5>
+    <div class="box-body">
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur
+        voluptates ab, necessitatibus sed repellendus est deserunt facere vitae
+        quis reiciendis itaque maiores corrupti voluptatem quia temporibus nobis
+        minus ipsum ad?
+      </p>
+    </div>
+  </div>
+  <div class="box bug">
+    <h5>Report a bug</h5>
+    <div class="box-body fields">
+      <div class="row">
+        <div class="col s12 l12">
+          <div class="input-field">
+            <i class="material-icons prefix white-text">email</i>
+            <input id="sign-email" type="text" class="validate white-text" />
+            <label for="sign-email" class="white-text">Email address</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 l12">
+          <div class="input-field">
+            <i class="material-icons prefix white-text">font_download</i>
+            <input id="title" type="text" class="validate white-text" />
+            <label for="title" class="white-text">Title</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix white-text">donut_large</i>
+          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1" class="white-text">Steps to reproduce</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix white-text">desktop_mac</i>
+          <textarea id="textarea2" class="materialize-textarea"></textarea>
+          <label for="textarea2" class="white-text">Environment</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix white-text">insert_comment</i>
+          <textarea id="textarea3" class="materialize-textarea"></textarea>
+          <label for="textarea3" class="white-text">Comment</label>
+        </div>
+      </div>
+      <input type="file" id="file" style="display: none" />
+      <div class="row">
+        <div style="display: flex; justify-content: flex-end">
+          <a
+            class="btn-floating pulse blue-grey"
+            style="margin-right: 1.5rem"
+            onClick="document.getElementById('file').click();"
+            ><i class="material-icons">image</i></a
+          >
+          <a class="waves-effect waves-light btn orange">Submit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

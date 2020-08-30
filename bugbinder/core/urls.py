@@ -4,5 +4,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name="dashboard"),
     path('u/', views.userView),
     path('profile/', views.profileView, name="profile"),
+    path('issue/', views.issueView, name="issue"),
 
 ]

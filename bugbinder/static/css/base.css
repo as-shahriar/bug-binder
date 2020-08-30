@@ -7,6 +7,26 @@ body {
   background-color: var(--color-black);
   color: white;
 }
+* {
+  color: white;
+}
+
+.base-error {
+  position: fixed;
+  padding: 0.5rem 2rem;
+  background-color: var(--color-red);
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  display: none;
+}
+
+#close-base-error {
+  cursor: pointer;
+}
+
 .left {
   width: 18rem;
   height: 100vh;
@@ -21,7 +41,7 @@ body {
   background-color: var(--color-dark-blue);
   box-shadow: 1px 2px 2px #0006;
   height: 100%;
-  width: 18rem;
+  width: 17rem;
 }
 
 .top-box {
@@ -37,7 +57,7 @@ body {
   margin-right: 1rem;
 }
 .top-box > h1 {
-  font-size: 2rem !important;
+  font-size: 1.5em !important;
   color: white !important;
   margin: 0;
 }
@@ -48,7 +68,7 @@ body {
 .menu li {
   display: flex;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   align-items: center;
   padding: 0.6rem 0;
   margin: 1rem 0;
@@ -91,6 +111,12 @@ body {
 }
 .sidenav a li i {
   font-size: 1.5rem;
+}
+
+input[type="text"]:not(.browser-default):focus,
+input[type="password"]:not(.browser-default):focus {
+  border-bottom: 1px solid white !important;
+  box-shadow: 0 1px 0 0 white !important;
 }
 
 @media (max-width: 550px) {

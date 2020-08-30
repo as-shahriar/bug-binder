@@ -34,6 +34,13 @@
   </head>
 
   <body>
+    <div class="base-error">
+      Sample error messagloreme Lorem ipsum dolor sit amet consectetu Lorem
+      ipsum dolor sit amet consectetur adipisicing elit. Repellendus, suscipit
+      adipisci animi soluta aut sunt ducimus officiis totam cumque praesentium
+      ab consectetur maxime id nulla quia voluptatem! Est, ab vero?
+      <i class="material-icons" id="close-base-error">clear</i>
+    </div>
     <ul class="menu sidenav" id="mobile-links">
       <a href="{% url 'profile' %}"
         ><li><i class="material-icons">account_circle</i>Asif Shahriar</li></a
@@ -57,14 +64,21 @@
             <h1>Bug Binder</h1>
           </div>
           <ul class="menu">
+            <a href="{% url 'home' %}"
+              ><li><i class="material-icons"></i>Login or Signup</li></a
+            >
+            <a href="{% url 'dashboard' %}"
+              ><li><i class="material-icons">dashboard</i>Dashboard</li></a
+            >
+            <a href="{% url 'issue' %}"
+              ><li><i class="material-icons">bug_report</i>Bug Issue</li></a
+            >
             <a href="{% url 'profile' %}"
               ><li>
                 <i class="material-icons">account_circle</i>Asif Shahriar
               </li></a
             >
-            <a href="{% url 'dashboard' %}"
-              ><li><i class="material-icons">dashboard</i>Dashboard</li></a
-            >
+
             <a href="#"
               ><li><i class="material-icons">details</i>Tasks</li></a
             >
