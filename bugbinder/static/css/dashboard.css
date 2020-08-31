@@ -1,18 +1,30 @@
 .content-title {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   padding: 1rem;
   color: var(--color-blue-light);
   margin-bottom: 1rem;
 }
-
-.content-title > h1 {
+.modal-background {
+  background-color: var(--color-blue-dark);
+}
+.content-title div {
+  display: flex;
+  align-items: center;
+}
+.content-title div h1 {
   margin: 0;
   font-size: 2.4rem;
-  margin-left: 0.5rem;
 }
-.content-title > i {
+.content-title div i {
   font-size: 2.5rem;
+  margin-right: 0.5rem;
+}
+#add-project {
+  cursor: pointer;
+}
+#add-project i {
+  font-size: 1.5rem;
 }
 
 .boxs {
@@ -42,7 +54,13 @@
 .box-background > h6 {
   text-align: center;
   font-size: 1.4rem;
+  padding-top: 9px;
 }
+textarea:not(.browser-default):focus {
+  border-bottom: 1px solid white !important;
+  box-shadow: 0 1px 0 0 white !important;
+}
+
 .box-bottom {
   position: absolute;
   bottom: 0;
@@ -85,9 +103,21 @@
 .done-color {
   background-color: #2ecc71;
 }
-
-@media (max-width: 550px) {
+@media (max-width: 810px) {
+  .content-title div h1 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  .content-title div i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
   .content-title {
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+  }
+  #add-project {
+    margin-top: 1rem;
   }
 }

@@ -3,8 +3,16 @@ Dashboard{%endblock%} {%block css%}
 <link rel="stylesheet" href="{% static 'css/dashboard.css'%}" /> {%endblock%}
 {%block body%}
 <div class="content-title">
-  <i class="material-icons">dashboard</i>
-  <h1>Dashboard</h1>
+  <div>
+    <i class="material-icons">dashboard</i>
+    <h1>Dashboard</h1>
+  </div>
+  <a href="#add-project-modal" class="modal-trigger white-text">
+    <div id="add-project">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      <h6>Add Project</h6>
+    </div>
+  </a>
 </div>
 
 <div class="row boxs">
@@ -38,7 +46,47 @@ Dashboard{%endblock%} {%block css%}
     </div>
   </div>
   <!-- box ends -->
+
+  <!-- Add Project -->
+  <div id="add-project-modal" class="modal modal-background">
+    <div class="modal-content" style="overflow: hidden">
+      <div class="row">
+        <div class="col s12 l12 error"><h5>Create New Project</h5></div>
+      </div>
+      <div class="row">
+        <div class="col s12 l12">
+          <div class="input-field">
+            <i class="material-icons prefix white-text">assignment</i>
+            <input id="name" type="password" class="validate white-text" />
+            <label for="name" class="white-text">Project Name</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix white-text">chat</i>
+          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1" class="white-text">Description</label>
+        </div>
+      </div>
+
+      <div
+        class="row"
+        style="display: flex; justify-content: flex-end; margin-bottom: 0"
+      >
+        <a class="waves-effect waves-light btn red modal-close">Cancel</a>
+        <a class="waves-effect waves-light btn green" style="margin-left: 1rem"
+          >Create Project</a
+        >
+      </div>
+    </div>
+  </div>
   {%endfor%}
 </div>
 
+{%endblock%} {%block script%}
+<script>
+  var elems = document.querySelectorAll(".modal");
+  var instances = M.Modal.init(elems);
+</script>
 {%endblock%}
