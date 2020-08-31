@@ -15,3 +15,7 @@ def profileView(request):
 
 def issueView(request):
     return render(request, 'core/bug-issue.html')
+
+
+def projectView(request):
+    return render(request, 'core/project.html')

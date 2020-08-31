@@ -33,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 
-  <body>
+  <body style="overflow: hidden">
     <div id="preloder-background">
       <div class="progress">
         <div class="indeterminate"></div>
@@ -47,11 +47,17 @@
       <i class="material-icons" id="close-base-error">clear</i>
     </div>
     <ul class="menu sidenav" id="mobile-links">
-      <a href="{% url 'profile' %}"
-        ><li><i class="material-icons">account_circle</i>Asif Shahriar</li></a
+      <a href="{% url 'home' %}"
+        ><li><i class="material-icons"></i>Login or Signup</li></a
       >
       <a href="{% url 'dashboard' %}"
         ><li><i class="material-icons">dashboard</i>Dashboard</li></a
+      >
+      <a href="{% url 'issue' %}"
+        ><li><i class="material-icons">bug_report</i>Bug Issue</li></a
+      >
+      <a href="{% url 'profile' %}"
+        ><li><i class="material-icons">account_circle</i>Asif Shahriar</li></a
       >
       <a href="#"
         ><li><i class="material-icons">details</i>Tasks</li></a
@@ -64,10 +70,12 @@
     <div class="main">
       <div class="left">
         <div class="left-div">
-          <div class="top-box">
-            <img src="{%static 'img/bug.svg' %}" />
-            <h1>Bug Binder</h1>
-          </div>
+          <a href="{% url 'dashboard' %}"
+            ><div class="top-box">
+              <img src="{%static 'img/bug.svg' %}" />
+              <h1>Bug Binder</h1>
+            </div></a
+          >
           <ul class="menu">
             <a href="{% url 'home' %}"
               ><li><i class="material-icons"></i>Login or Signup</li></a
@@ -115,7 +123,8 @@
         var instances = M.Sidenav.init(elems);
         setTimeout(function () {
           document.getElementById("preloder-background").style.display = "none";
-        }, 2000);
+          document.body.style.overflow = "auto";
+        }, 1); ///use 2000 in production
       });
     </script>
     {%block script%}{%endblock%}

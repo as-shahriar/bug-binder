@@ -11,8 +11,8 @@ Dashboard{%endblock%} {%block css%}
   {% for i in '01234567891231546548798465435'|make_list%}
   <!-- box starts -->
   <div class="col l4 m12 s12">
-    <a href="#" class="white-text">
-      <div class="box">
+    <div class="box">
+      <a href="{% url 'project'%}" class="white-text">
         <div class="box-background">
           <h6>Project Name</h6>
           <div class="box-bottom">
@@ -34,8 +34,8 @@ Dashboard{%endblock%} {%block css%}
             </div>
           </div>
         </div>
-      </div></a
-    >
+      </a>
+    </div>
   </div>
   <!-- box ends -->
   {%endfor%}

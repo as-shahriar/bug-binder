@@ -1,0 +1,106 @@
+.fields {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem auto;
+}
+
+.box {
+  width: auto;
+}
+
+.div-container {
+  position: relative;
+  margin: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.post {
+  width: 100%;
+}
+.box-head {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 1rem;
+}
+#edit-project,
+#add-dev {
+  cursor: pointer;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-shadow: 2px 2px 7px #2f2f2f;
+  font-weight: 600;
+  margin: 0 0.5rem;
+  padding: 1rem 0;
+}
+
+.items span {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.items h5 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+#myChart {
+  width: 80%;
+  height: 80%;
+}
+
+.dev-wraper {
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 2rem;
+  margin-right: 1.5rem;
+}
+.dev-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+.dev-item:hover {
+  background-color: var(--color-blue-light);
+}
+.dev-items {
+  height: calc(100vh - 5rem);
+  overflow-y: scroll;
+}
+.left-section {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (max-width: 810px) {
+  .left-section {
+    width: 100%;
+  }
+  .dev-wraper {
+    display: none;
+  }
+  .div-container {
+    justify-content: center;
+  }
+}
+@media (max-width: 920px) {
+  .fields {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .items {
+    margin-top: 1rem;
+  }
+}

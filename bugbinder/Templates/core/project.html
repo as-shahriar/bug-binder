@@ -1,0 +1,130 @@
+{%extends 'base.html'%}{% load static %} {%block title%}Bug Binder |
+Dashboard{%endblock%} {%block css%}
+
+<link rel="stylesheet" href="{% static 'css/bug-issue.css'%}" />
+<link rel="stylesheet" href="{% static 'css/project.css'%}" />
+{%endblock%}
+
+<!--  -->
+{%block body%}
+<div class="div-container">
+  <div class="left-section">
+    <div class="box bug">
+      <div class="box-head">
+        <h5>Project Name</h5>
+        <h5 id="edit-project">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </h5>
+      </div>
+      <div class="box-body fields">
+        <div class="items">
+          <span class="mred">bugs</span>
+          <h5 class="mred">2012</h5>
+        </div>
+        <div class="items myellow">
+          <span class="myellow">Assigned</span>
+          <h5 class="myellow">2012</h5>
+        </div>
+        <div class="items">
+          <span class="mgreen">Fixed</span>
+          <h5 class="mgreen">2012</h5>
+        </div>
+        <div class="items">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    {% for i in "12345dsfsd6789798564523123132|make_list"%}
+    <!-- post -->
+    <div class="box bug post">
+      <div class="box-head">
+        <h5>10-08-2020</h5>
+        <h5 id="edit-project">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </h5>
+      </div>
+      <div class="box-body">
+        <h6>Title here</h6>
+        <p>
+          Lorem ipsum dolorl Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Sequi sapiente exercitationem, architecto magnam excepturi
+          accusantium sit quidem libero porro id? Aliquid eum nulla, libero
+          pariatur vitae saepe! Nisi, reiciendis molestiae.
+        </p>
+        <p><b>Steps to reproduce: </b></p>
+        <p><b>Environment: </b></p>
+
+        <a href="#" class="white-text">
+          <i class="fa fa-picture-o" aria-hidden="true"></i> Picture
+        </a>
+        <p><b>Submitted By: </b></p>
+        <p><b>Comment: </b></p>
+        <p>
+          <i
+            class="fa fa-code"
+            aria-hidden="true"
+            style="margin-right: 0.5rem"
+          ></i>
+          Assigned to <a href="#" class="white-text"> <b>Asif Shahriar</b></a>
+        </p>
+
+        <p><i class="fa fa-paper-plane" aria-hidden="true"></i> Assigne Dev</p>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+
+  <div class="box dev-wraper">
+    <div class="box-head">
+      <h5>Devs</h5>
+      <h5 id="add-dev">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      </h5>
+    </div>
+    <div class="box-body dev-items">
+      {% for i in "12345dsfsd6789798564523123132|make_list"%}
+      <div class="dev-item">
+        <div>
+          <i
+            class="fa fa-code"
+            aria-hidden="true"
+            style="margin-right: 0.5rem"
+          ></i>
+          asifo1
+        </div>
+        <i
+          class="fa fa-trash"
+          aria-hidden="true"
+          style="margin-left: 0.8rem"
+          id="delete-dev"
+        ></i>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</div>
+
+{%endblock%} {%block script%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script>
+  var ctx = document.getElementById("myChart").getContext("2d");
+  var myChart = new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: ["Bugs", "Assigned", "Fixed"],
+      datasets: [
+        {
+          data: [12, 12, 120],
+          backgroundColor: ["#c70039", "#f5b041", "#2ecc71"],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      responsive: false,
+    },
+  });
+</script>
+{%endblock%}
