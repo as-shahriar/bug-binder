@@ -82,6 +82,23 @@
   justify-content: flex-start;
   align-items: center;
 }
+.dev-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+}
+.dev-preview img {
+  width: 4rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+.dev-preview i {
+  margin-left: 1rem;
+  color: var(--color-green);
+  cursor: pointer;
+  padding: 0.5rem;
+}
 
 @media (max-width: 810px) {
   .left-section {

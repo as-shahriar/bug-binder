@@ -12,9 +12,11 @@ Dashboard{%endblock%} {%block css%}
     <div class="box bug">
       <div class="box-head">
         <h5>Project Name</h5>
-        <h5 id="edit-project">
-          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-        </h5>
+        <a href="#edit-project-modal" class="modal-trigger white-text">
+          <h5 id="edit-project">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </h5>
+        </a>
       </div>
       <div class="box-body fields">
         <div class="items">
@@ -73,14 +75,19 @@ Dashboard{%endblock%} {%block css%}
       </div>
     </div>
     {%endfor%}
+    <div class="progress" style="margin-bottom: 2.5rem">
+      <div class="indeterminate"></div>
+    </div>
   </div>
 
   <div class="box dev-wraper">
     <div class="box-head">
       <h5>Devs</h5>
-      <h5 id="add-dev">
-        <i class="fa fa-plus-circle" aria-hidden="true"></i>
-      </h5>
+      <a href="#add-dev-modal" class="modal-trigger white-text">
+        <h5 id="add-dev">
+          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </h5>
+      </a>
     </div>
     <div class="box-body dev-items">
       {% for i in "12345dsfsd6789798564523123132|make_list"%}
@@ -104,6 +111,80 @@ Dashboard{%endblock%} {%block css%}
     </div>
   </div>
 </div>
+
+<!-- Edit Project -->
+<div id="edit-project-modal" class="modal modal-background">
+  <div class="modal-content" style="overflow: hidden">
+    <div class="row">
+      <div class="col s12 l12 error"><h5>Edit Project</h5></div>
+    </div>
+    <div class="row">
+      <div class="col s12 l12">
+        <div class="input-field">
+          <i class="material-icons prefix white-text">assignment</i>
+          <input id="name" type="password" class="validate white-text" />
+          <label for="name" class="white-text">Project Name</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix white-text">chat</i>
+        <textarea id="textarea1" class="materialize-textarea"></textarea>
+        <label for="textarea1" class="white-text">Description</label>
+      </div>
+    </div>
+
+    <div
+      class="row"
+      style="display: flex; justify-content: flex-end; margin-bottom: 0"
+    >
+      <a class="waves-effect waves-light btn red modal-close">Cancel</a>
+      <a class="waves-effect waves-light btn green" style="margin-left: 1rem"
+        >Create Project</a
+      >
+    </div>
+  </div>
+</div>
+<!-- Edit Project -->
+
+<!-- add devs -->
+<div id="add-dev-modal" class="modal modal-background">
+  <div class="modal-content" style="overflow: hidden">
+    <div class="row">
+      <div class="col s12 l12 error"><h5>Add Devs</h5></div>
+    </div>
+    <div class="row">
+      <div class="col s12 l12">
+        <div class="input-field">
+          <i class="material-icons prefix white-text">mail</i>
+          <input id="name1" type="text" class="validate white-text" />
+          <label for="name1" class="white-text">Email Address</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="dev-preview">
+          <img src="https://avatars0.githubusercontent.com/u/34039975" /> Asif
+          Shahriar
+          <i class="fa fa-check" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="row"
+      style="display: flex; justify-content: flex-end; margin-bottom: 0"
+    >
+      <a class="waves-effect waves-light btn red modal-close">Cancel</a>
+      <a class="waves-effect waves-light btn green" style="margin-left: 1rem"
+        >View Dev</a
+      >
+    </div>
+  </div>
+</div>
+<!-- add devs -->
 
 {%endblock%} {%block script%}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>

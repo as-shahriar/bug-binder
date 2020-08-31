@@ -83,10 +83,10 @@ Dashboard{%endblock%} {%block css%}
   </div>
   {%endfor%}
 </div>
+<div style="display: flex; justify-content: center">
+  <div class="progress" style="margin-bottom: 2.5rem">
+    <div class="indeterminate"></div>
+  </div>
+</div>
 
-{%endblock%} {%block script%}
-<script>
-  var elems = document.querySelectorAll(".modal");
-  var instances = M.Modal.init(elems);
-</script>
-{%endblock%}
+{%endblock%} {%block script%} {%endblock%}

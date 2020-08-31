@@ -27,6 +27,9 @@ body {
 .progress .indeterminate {
   background-color: #ffffff8f;
 }
+.modal-background {
+  background-color: var(--color-blue-dark);
+}
 .base-error {
   position: fixed;
   padding: 0.5rem 2rem;

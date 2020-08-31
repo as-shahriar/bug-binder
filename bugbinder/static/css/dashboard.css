@@ -5,9 +5,7 @@
   color: var(--color-blue-light);
   margin-bottom: 1rem;
 }
-.modal-background {
-  background-color: var(--color-blue-dark);
-}
+
 .content-title div {
   display: flex;
   align-items: center;

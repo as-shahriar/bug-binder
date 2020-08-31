@@ -125,6 +125,8 @@
           document.getElementById("preloder-background").style.display = "none";
           document.body.style.overflow = "auto";
         }, 1); ///use 2000 in production
+        var elems = document.querySelectorAll(".modal");
+        var instances = M.Modal.init(elems);
       });
     </script>
     {%block script%}{%endblock%}
