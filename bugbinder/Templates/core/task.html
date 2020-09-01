@@ -1,0 +1,76 @@
+{%extends 'base.html'%}{% load static %} {%block title%}Bug Binder |
+Dashboard{%endblock%} {%block css%}
+
+<link rel="stylesheet" href="{% static 'css/bug-issue.css'%}" />
+<link rel="stylesheet" href="{% static 'css/task.css'%}" />
+{%endblock%}
+
+<!--  -->
+{%block body%}
+<div class="container-div">
+  <div class="box bug">
+    <div class="box-head">
+      <h5>Task Report</h5>
+    </div>
+    <div class="box-body field">
+      <div class="items">
+        <span class="mred">New</span>
+        <h5 class="mred">2012</h5>
+      </div>
+      <div class="items myellow">
+        <span class="myellow">Accepted</span>
+        <h5 class="myellow">2012</h5>
+      </div>
+      <div class="items">
+        <span class="mgreen">Fixed</span>
+        <h5 class="mgreen">2012</h5>
+      </div>
+    </div>
+  </div>
+  <div class="box">
+    <h5>Project Name</h5>
+    <div class="box-body" style="padding: 1.5rem">
+      <h6>Title here</h6>
+      <p>
+        Lorem ipsum dolorl Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Sequi sapiente exercitationem, architecto magnam excepturi
+        accusantium sit quidem libero porro id? Aliquid eum nulla, libero
+        pariatur vitae saepe! Nisi, reiciendis molestiae.
+      </p>
+      <p><b>Steps to reproduce: </b></p>
+      <p><b>Environment: </b></p>
+
+      <a href="#" class="white-text">
+        <i class="fa fa-picture-o" aria-hidden="true"></i> Picture
+      </a>
+      <p><b>Submitted By: </b></p>
+      <p><b>Comment: </b></p>
+      <p>
+        Accespt
+        <i
+          class="fa fa-check mgreen"
+          aria-hidden="true"
+          style="font-size: 1.5rem; cursor: pointer"
+        ></i>
+      </p>
+      <div class="row">
+        <div class="input-field col s10">
+          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <label for="textarea1" class="white-text">Solution</label>
+        </div>
+        <div class="col s1">
+          <i
+            class="fa fa-paper-plane mgreen"
+            aria-hidden="true"
+            style="font-size: 1.5rem; cursor: pointer; margin-top: 17px"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="progress" style="margin: 2.5rem 0">
+    <div class="indeterminate"></div>
+  </div>
+</div>
+
+{%endblock%}

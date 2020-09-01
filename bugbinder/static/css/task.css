@@ -1,0 +1,26 @@
+.field {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 3rem;
+}
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-shadow: 2px 2px 7px #2f2f2f;
+  font-weight: 600;
+  margin: 0 0.5rem;
+  padding: 1rem 0;
+}
+
+.items span {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.items h5 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+}

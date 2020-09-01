@@ -19,3 +19,7 @@ def issueView(request):
 
 def projectView(request):
     return render(request, 'core/project.html')
+
+
+def taskView(request):
+    return render(request, 'core/task.html')
