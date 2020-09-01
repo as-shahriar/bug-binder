@@ -78,7 +78,9 @@
           >
           <ul class="menu">
             <a href="{% url 'home' %}"
-              ><li><i class="material-icons"></i>Login or Signup</li></a
+              ><li>
+                <i class="material-icons">exit_to_app</i>Login or Signup
+              </li></a
             >
             <a href="{% url 'dashboard' %}"
               ><li><i class="material-icons">dashboard</i>Dashboard</li></a
@@ -93,7 +95,13 @@
             >
 
             <a href="#"
-              ><li><i class="material-icons">details</i>Tasks</li></a
+              ><li>
+                <i class="material-icons">details</i>Tasks<span
+                  class="white-text badge"
+                  style="background-color: #3282b8; border-radius: 4px"
+                  >5</span
+                >
+              </li></a
             >
             <a href="#"
               ><li><i class="material-icons">exit_to_app</i>Logout</li></a
@@ -127,6 +135,8 @@
         }, 1); ///use 2000 in production
         var elems = document.querySelectorAll(".modal");
         var instances = M.Modal.init(elems);
+        var elems = document.querySelectorAll("select");
+        var instances = M.FormSelect.init(elems);
       });
     </script>
     {%block script%}{%endblock%}
