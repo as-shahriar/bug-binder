@@ -8,29 +8,45 @@ Dashboard{%endblock%} {%block css%}
   <div class="box-background">
     <div class="top-section">
       <i class="material-icons">account_circle</i>
-      <h6 style="margin: 0; margin-left: 0.3rem">asifo1</h6>
+      <h6 style="margin: 0; margin-left: 0.3rem">{{profile.user.username}}</h6>
     </div>
     <div class="box-bottom">
       <div class="left-section">
-        <img src="https://avatars0.githubusercontent.com/u/34039975" />
+        <img
+          src="{%if profile.github%}https://github.com/{{profile.github}}.png {%else%}{%static 'img/user.png'%}{%endif%}"
+        />
         <div class="socials">
-          <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          {%if profile.github%}
+          <a href="https://github.com/{{profile.github}}" target="_blank"
+            ><i class="fa fa-github" aria-hidden="true"></i
+          ></a>
+          {%endif%} {%if profile.linkedin%}
+          <a
+            href="https://www.linkedin.com/in/{{profile.linkedin}}"
+            target="_blank"
+            ><i class="fa fa-linkedin" aria-hidden="true"></i></a
+          >{%endif%}
         </div>
       </div>
       <div class="right-section">
         <div class="right-sub">
           <div class="info-field">
-            Asif Shahriar<i class="fa fa-user" aria-hidden="true"></i>
+            {{profile.name}}<i class="fa fa-user" aria-hidden="true"></i>
           </div>
           <div class="info-field">
-            asif.past@il.com<i class="fa fa-envelope" aria-hidden="true"></i>
+            {{profile.user.email}}<i
+              class="fa fa-envelope"
+              aria-hidden="true"
+            ></i>
           </div>
           <div class="info-field">
-            01719563829<i class="fa fa-phone-square" aria-hidden="true"></i>
+            {{profile.mobile}}<i
+              class="fa fa-phone-square"
+              aria-hidden="true"
+            ></i>
           </div>
           <div class="info-field">
-            Test BD Soft LTD.<i class="fa fa-building" aria-hidden="true"></i>
+            {{profile.office}}<i class="fa fa-building" aria-hidden="true"></i>
           </div>
           <div class="info-field" title="Assined bugs">
             215 Assigned<i class="fa fa-bug" aria-hidden="true"></i>

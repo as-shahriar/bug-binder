@@ -5,6 +5,20 @@ document.addEventListener("DOMContentLoaded", function () {
   view_section = document.getElementById("view-section");
   changep = document.getElementById("passwordChange-triger");
   edit.addEventListener("click", () => {
+    name = document.getElementById("name").textContent;
+    email = document.getElementById("email").textContent;
+    mobile = document.getElementById("mobile").textContent;
+    office = document.getElementById("office").textContent;
+    github = document.getElementById("github").value;
+    linkedin = document.getElementById("linkedin").value;
+
+    if (name != "None") document.getElementById("ename").value = name;
+    if (email != "None") document.getElementById("eemail").value = email;
+    if (mobile != "None") document.getElementById("emobile").value = mobile;
+    if (office != "None") document.getElementById("eoffice").value = office;
+    if (github != "None") document.getElementById("egithub").value = github;
+    if (linkedin != "None")
+      document.getElementById("elinkedin").value = linkedin;
     view_section.style.display = "none";
     edit_section.style.display = "flex";
     edit.style.display = "none";
@@ -13,11 +27,55 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   save.addEventListener("click", () => {
-    view_section.style.display = "flex";
-    edit_section.style.display = "none";
-    edit.style.display = "block";
-    save.style.display = "none";
-    changep.style.display = "none";
+    ename = document.getElementById("ename").value;
+    eemail = document.getElementById("eemail").value;
+    emobile = document.getElementById("emobile").value;
+    eoffice = document.getElementById("eoffice").value;
+    egithub = document.getElementById("egithub").value;
+    elinkedin = document.getElementById("elinkedin").value;
+    if (egithub != null) egithub = egithub.trim();
+    if (eemail == "") return;
+
+    form = new FormData();
+    form.append("name", ename);
+    form.append("email", eemail);
+    form.append("mobile", emobile);
+    form.append("office", eoffice);
+    form.append("github", egithub);
+    form.append("linkedin", elinkedin);
+    fetch("/profile/", {
+      method: "POST",
+      body: form,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status == 200) {
+          document.getElementById("name").textContent = ename;
+          document.getElementById("email").textContent = eemail;
+          document.getElementById("mobile").textContent = emobile;
+          document.getElementById("office").textContent = eoffice;
+          document.getElementById("github").value = egithub;
+          document.getElementById("linkedin").value = elinkedin;
+          document.getElementById(
+            "user-image"
+          ).src = `https://github.com/${egithub}.png`;
+          document.getElementById(
+            "linkedin-link"
+          ).href = `https://www.linkedin.com/in/${elinkedin}`;
+
+          document.getElementById(
+            "github-link"
+          ).href = `https://github.com/${egithub}`;
+
+          view_section.style.display = "flex";
+          edit_section.style.display = "none";
+          edit.style.display = "block";
+          save.style.display = "none";
+          changep.style.display = "none";
+        } else {
+          document.getElementById("eemail").setAttribute("class", "invalid");
+        }
+      });
   });
 
   var elems = document.querySelectorAll(".modal");

@@ -30,25 +30,46 @@ Dashboard{%endblock%} {%block css%}
     </div>
     <div class="box-bottom">
       <div class="left-section">
-        <img src="https://avatars0.githubusercontent.com/u/34039975" />
+        <img
+          id="user-image"
+          src="{%if profile.github%}https://github.com/{{profile.github}}.png {%else%}{%static 'img/user.png'%}{%endif%}"
+        />
         <div class="socials">
-          <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
-          <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+          {%if profile.github%}
+          <a
+            id="github-link"
+            href="https://github.com/{{profile.github}}"
+            target="_blank"
+            ><i class="fa fa-github" aria-hidden="true"></i
+          ></a>
+          {%endif%} {%if profile.linkedin%}
+          <a
+            id="linkedin-link"
+            href="https://www.linkedin.com/in/{{profile.linkedin}}"
+            target="_blank"
+            ><i class="fa fa-linkedin" aria-hidden="true"></i></a
+          >{%endif%}
         </div>
       </div>
       <div class="right-section" id="view-section">
         <div class="right-sub">
+          <input type="hidden" value="{{profile.github}}" id="github" />
+          <input type="hidden" value="{{profile.linkedin}}" id="linkedin" />
           <div class="info-field">
-            Asif Shahriar<i class="fa fa-user" aria-hidden="true"></i>
+            <span id="name">{{profile.name}}</span
+            ><i class="fa fa-user" aria-hidden="true"></i>
           </div>
           <div class="info-field">
-            asif.past@il.com<i class="fa fa-envelope" aria-hidden="true"></i>
+            <span id="email">{{request.user.email}}</span
+            ><i class="fa fa-envelope" aria-hidden="true"></i>
           </div>
           <div class="info-field">
-            01719563829<i class="fa fa-phone-square" aria-hidden="true"></i>
+            <span id="mobile">{{profile.mobile}}</span
+            ><i class="fa fa-phone-square" aria-hidden="true"></i>
           </div>
           <div class="info-field">
-            Test BD Soft LTD.<i class="fa fa-building" aria-hidden="true"></i>
+            <span id="office">{{profile.office}}</span
+            ><i class="fa fa-building" aria-hidden="true"></i>
           </div>
           <div class="info-field" title="Assined bugs">
             215 Assigned<i class="fa fa-bug" aria-hidden="true"></i>
@@ -61,37 +82,37 @@ Dashboard{%endblock%} {%block css%}
 
       <div class="right-section" id="edit-section">
         <div class="info-field">
-          <input type="text" placeholder="Full Name" /><i
+          <input type="text" placeholder="Full Name" id="ename" /><i
             class="fa fa-user"
             aria-hidden="true"
           ></i>
         </div>
         <div class="info-field">
-          <input type="text" placeholder="Email Address" /><i
+          <input type="text" placeholder="Email Address" id="eemail" /><i
             class="fa fa-envelope"
             aria-hidden="true"
           ></i>
         </div>
         <div class="info-field">
-          <input type="text" placeholder="Mobile Number" /><i
+          <input type="text" placeholder="Mobile Number" id="emobile" /><i
             class="fa fa-phone-square"
             aria-hidden="true"
           ></i>
         </div>
         <div class="info-field">
-          <input type="text" placeholder="Organization" /><i
+          <input type="text" placeholder="Organization" id="eoffice" /><i
             class="fa fa-building"
             aria-hidden="true"
           ></i>
         </div>
         <div class="info-field">
-          <input type="text" placeholder="GitHub username" /><i
+          <input type="text" placeholder="GitHub username" id="egithub" /><i
             class="fa fa-github"
             aria-hidden="true"
           ></i>
         </div>
         <div class="info-field">
-          <input type="text" placeholder="Linkedin username" /><i
+          <input type="text" placeholder="Linkedin username" id="elinkedin" /><i
             class="fa fa-linkedin"
             aria-hidden="true"
           ></i>

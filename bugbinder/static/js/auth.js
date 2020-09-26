@@ -26,3 +26,46 @@ document.getElementById("reset-triger").addEventListener("click", () => {
   login.style.display = "none";
   reset.style.display = "block";
 });
+
+// login starts
+document.getElementById("login-btn").addEventListener("click", () => {
+  email = document.getElementById("email").value;
+  password = document.getElementById("password").value;
+  if (email == "" || password == "") return;
+
+  form = new FormData();
+  form.append("username", email);
+  form.append("password", password);
+  form.append("login", "");
+  fetch("/", {
+    method: "POST",
+    body: form,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.status == 200) location.href = "/dashboard";
+      else document.getElementById("login-error").style.display = "flex";
+    });
+});
+
+document.getElementById("signup-btn").addEventListener("click", () => {
+  username = document.getElementById("susername").value;
+  email = document.getElementById("sign-email").value;
+  password = document.getElementById("sign-password").value;
+  if (email == "" || password == "") return;
+
+  form = new FormData();
+  form.append("username", username);
+  form.append("email", email);
+  form.append("password", password);
+  form.append("signup", "");
+  fetch("/", {
+    method: "POST",
+    body: form,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.status == 200) location.href = "/profile";
+      else document.getElementById("signup-error").style.display = "flex";
+    });
+});

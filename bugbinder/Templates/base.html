@@ -126,13 +126,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var elems = document.querySelectorAll(".sidenav");
-        var instances = M.Sidenav.init(elems);
+      window.onload = () => {
         setTimeout(function () {
           document.getElementById("preloder-background").style.display = "none";
           document.body.style.overflow = "auto";
-        }, 1); ///use 2000 in production
+        }, 1); ///use 1000 in production
+      };
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".sidenav");
+        var instances = M.Sidenav.init(elems);
+
         var elems = document.querySelectorAll(".modal");
         var instances = M.Modal.init(elems);
         var elems = document.querySelectorAll("select");

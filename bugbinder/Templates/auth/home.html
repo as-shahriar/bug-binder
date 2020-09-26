@@ -123,7 +123,7 @@
             <h5 class="text-green" style="margin: 0">Login</h5>
           </div>
 
-          <div class="row">
+          <div class="row" id="login-error" style="display: none">
             <div class="col s12 l10 offset-l1 error">
               Wrong credentials. Try again.
             </div>
@@ -162,7 +162,7 @@
               id="forget-triger"
               >Forget Password?</a
             >
-            <a class="waves-effect waves-light btn">Login</a>
+            <a class="waves-effect waves-light btn" id="login-btn">Login</a>
           </div>
         </div>
 
@@ -286,7 +286,7 @@
           <i class="material-icons left text-green">local_hospital</i>
           <h5 class="text-green" style="margin: 0">Sign up</h5>
         </div>
-        <div class="row">
+        <div class="row" id="signup-error" style="display: none">
           <div class="col s12 l10 offset-l1 error">
             Credentials already used.
           </div>
@@ -295,8 +295,8 @@
           <div class="col s12 l10 offset-l1">
             <div class="input-field">
               <i class="material-icons prefix text-green">account_box</i>
-              <input id="name" type="text" class="validate text-green" />
-              <label for="name" class="text-green">Full Name</label>
+              <input id="susername" type="text" class="validate text-green" />
+              <label for="susername" class="text-green">Username</label>
             </div>
           </div>
         </div>
@@ -327,7 +327,7 @@
           class="row"
           style="display: flex; justify-content: center; margin-bottom: 0"
         >
-          <a class="waves-effect waves-light btn">Sign up</a>
+          <a class="waves-effect waves-light btn" id="signup-btn">Sign up</a>
         </div>
       </div>
     </div>
