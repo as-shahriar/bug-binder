@@ -25,6 +25,8 @@ def profileView(request):
             office = request.POST.get('office')
             github = request.POST.get('github')
             linkedin = request.POST.get('linkedin')
+
+            profile.user = request.user
             profile.name = name
             profile.mobile = mobile
             profile.office = office

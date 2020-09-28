@@ -12,10 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
     github = document.getElementById("github").value;
     linkedin = document.getElementById("linkedin").value;
 
-    if (name != "None") document.getElementById("ename").value = name;
+    if (name != "None" && name.charAt(0) != "-")
+      document.getElementById("ename").value = name;
     if (email != "None") document.getElementById("eemail").value = email;
-    if (mobile != "None") document.getElementById("emobile").value = mobile;
-    if (office != "None") document.getElementById("eoffice").value = office;
+    if (mobile != "None" && mobile.charAt(0) != "-")
+      document.getElementById("emobile").value = mobile;
+    if (office != "None" && office.charAt(0) != "-")
+      document.getElementById("eoffice").value = office;
     if (github != "None") document.getElementById("egithub").value = github;
     if (linkedin != "None")
       document.getElementById("elinkedin").value = linkedin;
@@ -56,16 +59,29 @@ document.addEventListener("DOMContentLoaded", function () {
           document.getElementById("office").textContent = eoffice;
           document.getElementById("github").value = egithub;
           document.getElementById("linkedin").value = elinkedin;
-          document.getElementById(
-            "user-image"
-          ).src = `https://github.com/${egithub}.png`;
-          document.getElementById(
-            "linkedin-link"
-          ).href = `https://www.linkedin.com/in/${elinkedin}`;
-
-          document.getElementById(
-            "github-link"
-          ).href = `https://github.com/${egithub}`;
+          if (egithub != null && egithub != "") {
+            document.getElementById(
+              "user-image"
+            ).src = `https://github.com/${egithub}.png`;
+          }
+          if (
+            elinkedin != null &&
+            elinkedin != "" &&
+            document.getElementById("linkedin-link") != null
+          ) {
+            document.getElementById(
+              "linkedin-link"
+            ).href = `https://www.linkedin.com/in/${elinkedin}`;
+          }
+          if (
+            egithub != null &&
+            egithub != "" &&
+            document.getElementById("github-link") != null
+          ) {
+            document.getElementById(
+              "github-link"
+            ).href = `https://github.com/${egithub}`;
+          }
 
           view_section.style.display = "flex";
           edit_section.style.display = "none";

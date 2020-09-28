@@ -40,6 +40,8 @@ def home(request):
             user.set_password(password)
             user.email = email
             user.save()
+            user = authenticate(username=username, password=password)
+            login(request, user)
             return JsonResponse({'status': 200})
         except:
             return JsonResponse({'status': 400})
