@@ -180,7 +180,7 @@
               Forget Password
             </h5>
           </div>
-          <div class="row">
+          <div class="row" id="forget-error" style="display: none">
             <div class="col s12 l10 offset-l1 error">
               Wrong Email address. Try again.
             </div>
@@ -206,9 +206,8 @@
               style="cursor: pointer; margin-right: 1rem"
               >Back to login</a
             >
-            <a class="waves-effect waves-light btn" id="reset-triger"
-              >Get Code</a
-            >
+            <a class="waves-effect waves-light btn" id="forget-btn">Get Code</a>
+            <a href="#" id="reset-triger" style="display: none"></a>
           </div>
         </div>
 
@@ -224,17 +223,18 @@
             <i class="material-icons left text-green">lock_open</i>
             <h5 class="text-green" style="margin: 0">Reset Password</h5>
           </div>
-          <div class="row">
-            <div class="col s12 l10 offset-l1 error">
-              Wrong credentials. Try again.
-            </div>
+          <div class="row" id="reset-error" style="display: none">
+            <div
+              class="col s12 l10 offset-l1 error"
+              id="error-text-reset"
+            ></div>
           </div>
           <div class="row">
             <div class="col s12 l10 offset-l1">
               <div class="input-field white-text">
                 <i class="material-icons prefix text-green">lock</i>
-                <input id="remail" type="text" class="validate white-text" />
-                <label for="remail" class="text-green">Code</label>
+                <input id="rcode" type="text" class="validate white-text" />
+                <label for="rcode" class="text-green">Code</label>
               </div>
             </div>
           </div>
@@ -242,7 +242,11 @@
             <div class="col s12 l10 offset-l1">
               <div class="input-field white-text">
                 <i class="material-icons prefix text-green">vpn_key</i>
-                <input id="rpass1" type="text" class="validate white-text" />
+                <input
+                  id="rpass1"
+                  type="password"
+                  class="validate white-text"
+                />
                 <label for="rpass1" class="text-green">Password</label>
               </div>
             </div>
@@ -251,7 +255,11 @@
             <div class="col s12 l10 offset-l1">
               <div class="input-field white-text">
                 <i class="material-icons prefix text-green">vpn_key</i>
-                <input id="rpass2" type="text" class="validate white-text" />
+                <input
+                  id="rpass2"
+                  type="password"
+                  class="validate white-text"
+                />
                 <label for="rpass2" class="text-green">Confirm Password</label>
               </div>
             </div>
@@ -268,7 +276,7 @@
               style="cursor: pointer; margin-right: 1rem"
               >Back to login</a
             >
-            <a class="waves-effect waves-light btn">Reset</a>
+            <a class="waves-effect waves-light btn" id="reset-btn">Reset</a>
           </div>
         </div>
       </div>

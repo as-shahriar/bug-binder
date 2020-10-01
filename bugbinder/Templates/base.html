@@ -47,9 +47,10 @@
       <i class="material-icons" id="close-base-error">clear</i>
     </div>
     <ul class="menu sidenav" id="mobile-links">
+      {%if not request.user.is_authenticated%}
       <a href="{% url 'home' %}"
         ><li><i class="material-icons"></i>Login or Signup</li></a
-      >
+      >{%endif%}
       <a href="{% url 'dashboard' %}"
         ><li><i class="material-icons">dashboard</i>Dashboard</li></a
       >
@@ -77,11 +78,12 @@
             </div></a
           >
           <ul class="menu">
+            {%if not request.user.is_authenticated%}
             <a href="{% url 'home' %}"
               ><li>
                 <i class="material-icons">exit_to_app</i>Login or Signup
               </li></a
-            >
+            >{%endif%}
             <a href="{% url 'dashboard' %}"
               ><li><i class="material-icons">dashboard</i>Dashboard</li></a
             >
@@ -103,7 +105,7 @@
                 >
               </li></a
             >
-            <a href="#"
+            <a href="{%url 'logout'%}"
               ><li><i class="material-icons">exit_to_app</i>Logout</li></a
             >
           </ul>

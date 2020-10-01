@@ -1,3 +1,4 @@
+let global_email = "";
 document.addEventListener("DOMContentLoaded", function () {
   var elems = document.querySelectorAll(".sidenav");
   var instances = M.Sidenav.init(elems);
@@ -67,5 +68,53 @@ document.getElementById("signup-btn").addEventListener("click", () => {
     .then((data) => {
       if (data.status == 200) location.href = "/profile";
       else document.getElementById("signup-error").style.display = "flex";
+    });
+});
+
+document.getElementById("forget-btn").addEventListener("click", () => {
+  email = document.getElementById("femail").value;
+  if (email == "") return;
+  global_email = email;
+  form = new FormData();
+  form.append("email", email);
+  fetch("/forget/", {
+    method: "POST",
+    body: form,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.status == 200) document.getElementById("reset-triger").click();
+      else document.getElementById("forget-error").style.display = "flex";
+    });
+});
+
+document.getElementById("reset-btn").addEventListener("click", () => {
+  code = document.getElementById("rcode").value;
+  pass1 = document.getElementById("rpass1").value;
+  pass2 = document.getElementById("rpass2").value;
+  if (code == "" || pass1 == "" || pass2 == "") return;
+  if (pass1 != pass2) {
+    document.getElementById("reset-error").style.display = "flex";
+    document.getElementById("error-text-reset").textContent =
+      "Password didn't match.";
+    return;
+  }
+
+  form = new FormData();
+  form.append("code", code);
+  form.append("password", pass1);
+  form.append("email", global_email);
+  fetch("/reset/", {
+    method: "POST",
+    body: form,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.status == 200) location.href = "/dashboard";
+      else {
+        document.getElementById("reset-error").style.display = "flex";
+        document.getElementById("error-text-reset").textContent =
+          "Wrong credentials. Try again.";
+      }
     });
 });
