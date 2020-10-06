@@ -11,25 +11,27 @@ Dashboard{%endblock%} {%block css%}
   <div class="left-section">
     <div class="box bug">
       <div class="box-head">
-        <h5>Project Name</h5>
+        <h5>{{project.title}}</h5>
+        {%if request.user == project.owner%}
         <a href="#edit-project-modal" class="modal-trigger white-text">
           <h5 id="edit-project">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </h5>
         </a>
+        {%endif%}
       </div>
       <div class="box-body fields">
         <div class="items">
           <span class="mred">bugs</span>
-          <h5 class="mred">2012</h5>
+          <h5 class="mred" id="bugs-c">{{project.bugs}}</h5>
         </div>
         <div class="items myellow">
           <span class="myellow">Assigned</span>
-          <h5 class="myellow">2012</h5>
+          <h5 class="myellow" id="assigned-c">{{project.assigned}}</h5>
         </div>
         <div class="items">
           <span class="mgreen">Fixed</span>
-          <h5 class="mgreen">2012</h5>
+          <h5 class="mgreen" id="fixed-c">{{project.fixed}}</h5>
         </div>
         <div class="items">
           <canvas id="myChart"></canvas>
@@ -44,77 +46,78 @@ Dashboard{%endblock%} {%block css%}
       </div>
     </div>
 
-    {% for i in "12345dsfsd6789798564523123132|make_list"%}
+    {% for task in project.task.all %}
     <!-- post -->
-    <div class="box bug post">
+    <div class="box bug post" id="post-{{task.id}}">
       <div class="box-head">
-        <h5>10-08-2020</h5>
-        <h5 id="edit-project">
+        <h5>{{task.date}}</h5>
+        {%if request.user == project.owner%}
+        <h5 id="edit-project" class="delete-btn" data-id="{{task.id}}">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </h5>
+        {%endif%}
       </div>
       <div class="box-body">
-        <h6>Title here</h6>
-        <p>
-          Lorem ipsum dolorl Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Sequi sapiente exercitationem, architecto magnam excepturi
-          accusantium sit quidem libero porro id? Aliquid eum nulla, libero
-          pariatur vitae saepe! Nisi, reiciendis molestiae.
-        </p>
-        <p><b>Steps to reproduce: </b></p>
-        <p><b>Environment: </b></p>
+        <h6>{{task.title}}</h6>
 
-        <a href="#" class="white-text">
-          <i class="fa fa-picture-o" aria-hidden="true"></i> Picture
-        </a>
-        <p><b>Submitted By: </b></p>
-        <p><b>Comment: </b></p>
+        <p><b>Steps to reproduce: </b><br />{{task.reproduce}}</p>
+        <p><b>Environment: </b><br />{{task.environment}}</p>
+
+        <p><b>Submitted By: </b>{{task.email}}</p>
+        <p><b>Comment: </b><br />{{task.comment}}</p>
+        {%if task.assigned%}
         <p>
           <i
             class="fa fa-code"
             aria-hidden="true"
             style="margin-right: 0.5rem"
           ></i>
-          Assigned to <a href="#" class="white-text"> <b>Asif Shahriar</b></a>
+          Assigned to
+          <a
+            target="_blank"
+            href="{% url 'view_profile' task.dev %}"
+            class="white-text"
+          >
+            <b>{{task.dev}}</b></a
+          >
         </p>
-
-        <div class="row" style="margin: 0 0 1rem 0">
+        {%else%}
+        <div class="row" style="margin: 0 0 1rem 0" id="div-{{task.id}}">
           <div class="input-field col l6">
-            <select class="icons">
+            <select class="icons" id="select-{{task.id}}">
               <option value="" disabled selected>Assigne To Dev</option>
-              {% for i in "12345dsfsd6789798564523123132|make_list"%}
-              <option
-                value=""
-                data-icon="https://avatars0.githubusercontent.com/u/34039975"
-              >
-                Name here
-              </option>
-              {%endfor%}
+              {%if request.user == project.owner%}
+              <!--  -->
+              {% for dev in project.dev.all %}
+              <option value="{{dev.username}}">{{dev.username}}</option>
+              {%endfor%} {%else%}
+              <option value="{{request.user}}">{{request.user}}</option>
+              {%endif%}
             </select>
           </div>
-          <div id="assign-dev">
+          <div id="assign-dev" data-id="{{task.id}}" class="assign-btn">
             <i class="fa fa-check mgreen" aria-hidden="true"></i>
           </div>
         </div>
+        {%endif%}
       </div>
     </div>
     {%endfor%}
-    <div class="progress" style="margin-bottom: 2.5rem">
-      <div class="indeterminate"></div>
-    </div>
   </div>
 
   <div class="box dev-wraper">
     <div class="box-head">
       <h5>Devs</h5>
+      {%if request.user == project.owner%}
       <a href="#add-dev-modal" class="modal-trigger white-text">
         <h5 id="add-dev">
           <i class="fa fa-plus-circle" aria-hidden="true"></i>
         </h5>
       </a>
+      {%endif%}
     </div>
     <div class="box-body dev-items">
-      {% for i in "12345dsfsd6789798564523123132|make_list"%}
+      {% for dev in project.dev.all %}
       <div class="dev-item">
         <div>
           <i
@@ -122,14 +125,16 @@ Dashboard{%endblock%} {%block css%}
             aria-hidden="true"
             style="margin-right: 0.5rem"
           ></i>
-          asifo1
+          {{dev.username}}
         </div>
+        {%if request.user == project.owner%}
         <i
           class="fa fa-trash"
           aria-hidden="true"
           style="margin-left: 0.8rem"
           id="delete-dev"
-        ></i>
+        ></i
+        >{%endif%}
       </div>
       {%endfor%}
     </div>
@@ -141,6 +146,7 @@ Dashboard{%endblock%} {%block css%}
   <div class="modal-content" style="overflow: hidden">
     <div style="display: flex; justify-content: space-between">
       <div><h5>Dev list</h5></div>
+      {%if request.user == project.owner%}
       <div>
         <a href="#add-dev-modal" class="modal-trigger white-text">
           <h5 id="add-dev">
@@ -148,10 +154,11 @@ Dashboard{%endblock%} {%block css%}
           </h5>
         </a>
       </div>
+      {%endif%}
     </div>
 
     <div class="dev-items" style="max-height: 100%; overflow-y: visible">
-      {% for i in "12345dsfsd6789798564523123132|make_list"%}
+      {% for dev in project.dev.all %}
       <div class="dev-item">
         <div>
           <i
@@ -159,14 +166,16 @@ Dashboard{%endblock%} {%block css%}
             aria-hidden="true"
             style="margin-right: 0.5rem"
           ></i>
-          {{i}}
+          {{dev.username}}
         </div>
+        {%if request.user == project.owner%}
         <i
           class="fa fa-trash"
           aria-hidden="true"
           style="margin-left: 0.8rem"
           id="delete-dev"
-        ></i>
+        ></i
+        >{%endif%}
       </div>
       {%endfor%}
     </div>
@@ -191,32 +200,55 @@ Dashboard{%endblock%} {%block css%}
     <div class="row">
       <div class="col s12 l12 error"><h5>Edit Project</h5></div>
     </div>
-    <div class="row">
-      <div class="col s12 l12">
-        <div class="input-field">
-          <i class="material-icons prefix white-text">assignment</i>
-          <input id="name" type="password" class="validate white-text" />
-          <label for="name" class="white-text">Project Name</label>
+    <form method="POST">
+      {%csrf_token%}
+      <div class="row">
+        <div class="col s12 l12">
+          <div class="input-field">
+            <i class="material-icons prefix white-text">assignment</i>
+            <input
+              id="name"
+              type="text"
+              name="title"
+              class="validate white-text"
+              required
+            />
+            <label for="name" class="white-text">Project Name</label>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix white-text">chat</i>
-        <textarea id="textarea1" class="materialize-textarea"></textarea>
-        <label for="textarea1" class="white-text">Description</label>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix white-text">chat</i>
+          <textarea
+            name="description"
+            id="textarea1"
+            class="materialize-textarea"
+            required
+          ></textarea>
+          <label for="textarea1" class="white-text">Description</label>
+        </div>
       </div>
-    </div>
 
-    <div
-      class="row"
-      style="display: flex; justify-content: flex-end; margin-bottom: 0"
-    >
-      <a class="waves-effect waves-light btn red modal-close">Cancel</a>
-      <a class="waves-effect waves-light btn green" style="margin-left: 1rem"
-        >Save</a
+      <div
+        class="row"
+        style="display: flex; justify-content: flex-end; margin-bottom: 0"
       >
-    </div>
+        <a class="waves-effect waves-light btn blue modal-close">Cancel</a>
+        <a
+          class="waves-effect waves-light btn red"
+          style="margin-left: 1rem"
+          id="delete-project"
+          >Delecte</a
+        >
+        <button
+          class="waves-effect waves-light btn green"
+          style="margin-left: 1rem"
+        >
+          Save
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 <!-- Edit Project -->
@@ -263,13 +295,17 @@ Dashboard{%endblock%} {%block css%}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
   var ctx = document.getElementById("myChart").getContext("2d");
+  bugs = parseInt(document.getElementById("bugs-c").textContent);
+  assigned = parseInt(document.getElementById("assigned-c").textContent);
+  fixed = parseInt(document.getElementById("fixed-c").textContent);
+  if (bugs == 0 && assigned == 0 && fixed == 0) fixed = 100;
   var myChart = new Chart(ctx, {
     type: "pie",
     data: {
       labels: ["Bugs", "Assigned", "Fixed"],
       datasets: [
         {
-          data: [12, 12, 120],
+          data: [bugs, assigned, fixed],
           backgroundColor: ["#c70039", "#f5b041", "#2ecc71"],
           borderWidth: 1,
         },
@@ -281,4 +317,5 @@ Dashboard{%endblock%} {%block css%}
     },
   });
 </script>
+<script src="{%static 'js/project.js'%}"></script>
 {%endblock%}
