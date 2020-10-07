@@ -94,6 +94,32 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
+  document.getElementById("change_pass").addEventListener("click", () => {
+    current_p = document.getElementById("c_pass").value;
+    pass1 = document.getElementById("pass1").value;
+    pass2 = document.getElementById("pass2").value;
+    error = document.getElementById("password-error");
+    if (current_p == "" || pass1 == "" || pass2 == "") return;
+    if (pass1 != pass2) return;
+
+    form = new FormData();
+    form.append("c_pass", current_p);
+    form.append("password", pass1);
+
+    fetch("/password_change/", {
+      method: "POST",
+      body: form,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status == 200) {
+          document.getElementById("cancel-btn").click();
+        } else {
+          error.style.display = "flex";
+        }
+      });
+  });
+
   var elems = document.querySelectorAll(".modal");
   var instances = M.Modal.init(elems);
 });

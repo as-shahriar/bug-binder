@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Profile
 from _auth.models import User
+from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
 
 
 @login_required
@@ -54,3 +56,19 @@ def userView(request, username):
         return render(request, 'core/user.html', {"profile": profile})
     except:
         return redirect("/dashboard/")
+
+
+@login_required
+@csrf_exempt
+def password_change(request):
+    if request.method == "POST":
+        c_pass = request.POST.get("c_pass")
+        password = request.POST.get("password")
+        if not password == "":
+            user = User.objects.get(username=request.user.username)
+            if authenticate(username=user.username, password=c_pass):
+                user.set_password(password)
+                user.save()
+                login(request, user)
+                return JsonResponse({'status': 200})
+        return JsonResponse({'status': 403})

@@ -17,6 +17,7 @@ def dashboard(request):
         project.title = title
         project.description = description
         project.save()
+        project.dev.add(request.user)
         return redirect("project", id=project.id)
     projects = Project.objects.filter(
         Q(owner=request.user) | Q(dev__in=[request.user])
@@ -49,12 +50,22 @@ def assign(request):
     if request.method == "POST":
         id = request.POST.get('id')
         username = request.POST.get('username')
-        user = User.objects.get(username=username)
-
-        task = Task.objects.get(id=id)
-        if request.user == Project.objects.get(task__in=[task]).owner or request.user == user:
-            print("yes")
-        return JsonResponse({'status': 200})
+        if True:
+            user = User.objects.get(username=username)
+            task = Task.objects.get(id=id)
+            project = Project.objects.get(task__in=[task])
+            if request.user == project.owner or request.user == user:
+                task.dev = user
+                task.assigned = True
+                project.assigned = project.assigned + 1
+                task.save()
+                project.save()
+                return JsonResponse({'status': 200})
+            raise ValueError
+        try:
+            pass
+        except:
+            return JsonResponse({'status': 403})
 
 
 def issueView(request):
