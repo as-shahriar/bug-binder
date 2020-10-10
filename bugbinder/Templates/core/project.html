@@ -8,10 +8,11 @@ Dashboard{%endblock%} {%block css%}
 <!--  -->
 {%block body%}
 <div class="div-container">
+  <input type="hidden" value="{{project.id}}" id="project-id">
   <div class="left-section">
     <div class="box bug">
       <div class="box-head">
-        <h5>{{project.title}}</h5>
+        <h5 id="project-title">{{project.title}}</h5>
         {%if request.user == project.owner%}
         <a href="#edit-project-modal" class="modal-trigger white-text">
           <h5 id="edit-project">
@@ -207,13 +208,14 @@ Dashboard{%endblock%} {%block css%}
           <div class="input-field">
             <i class="material-icons prefix white-text">assignment</i>
             <input
-              id="name"
+              id="title"
               type="text"
               name="title"
               class="validate white-text"
+              value="{%if project.title%}{{project.title}}{%endif%}"
               required
             />
-            <label for="name" class="white-text">Project Name</label>
+            <label for="title" class="white-text">Project Name</label>
           </div>
         </div>
       </div>
@@ -222,11 +224,11 @@ Dashboard{%endblock%} {%block css%}
           <i class="material-icons prefix white-text">chat</i>
           <textarea
             name="description"
-            id="textarea1"
             class="materialize-textarea"
+            id="description"
             required
-          ></textarea>
-          <label for="textarea1" class="white-text">Description</label>
+          >{%if project.description%}{{project.description}}{%endif%}</textarea>
+          <label for="description" class="white-text">Description</label>
         </div>
       </div>
 
@@ -234,19 +236,20 @@ Dashboard{%endblock%} {%block css%}
         class="row"
         style="display: flex; justify-content: flex-end; margin-bottom: 0"
       >
-        <a class="waves-effect waves-light btn blue modal-close">Cancel</a>
+        <a class="waves-effect waves-light btn blue modal-close" id="cancel-modal-edit">Cancel</a>
         <a
           class="waves-effect waves-light btn red"
           style="margin-left: 1rem"
           id="delete-project"
           >Delecte</a
         >
-        <button
+        <a
           class="waves-effect waves-light btn green"
           style="margin-left: 1rem"
+          id="edit-project-save"
         >
           Save
-        </button>
+        </a>
       </div>
     </form>
   </div>

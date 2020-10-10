@@ -42,11 +42,48 @@ document.querySelectorAll(".assign-btn").forEach((e) => {
 document.querySelectorAll(".delete-btn").forEach((e) => {
   e.addEventListener("click", () => {
     id = e.getAttribute("data-id");
-    document.getElementById(`post-${id}`).innerHTML = "";
-    console.log(id);
+    form = new FormData();
+    form.append("id", id);
+    fetch("/delete_task/", {
+      method: "POST",
+      body: form,
+    }).then(res=>res.json()).then(data=>{
+      if (data.status=200)
+      document.getElementById(`post-${id}`).innerHTML = "";
+    });
   });
 });
 
 document.querySelector("#delete-project").addEventListener("click", () => {
-  location.href = "/dashboard";
+  id=document.getElementById('project-id').value;
+  form = new FormData();
+    form.append("id", id);
+    fetch("/delete_project/", {
+      method: "POST",
+      body: form,
+    }).then(res=>res.json()).then(data=>{
+      if (data.status=200)
+      location.href = "/dashboard";
+    });
+  
+});
+
+document.querySelector("#edit-project-save").addEventListener("click", () => {
+  id=document.getElementById('project-id').value;
+  title = document.getElementById('title').value;
+  description = document.getElementById('description').value;
+  if (title=="" || description=="") return;
+
+  form = new FormData();
+  form.append("id", id);
+  form.append("title", title);
+  form.append("description", description);
+  fetch("/edit_project/", {
+    method: "POST",
+    body: form,
+  }).then(res=>res.json()).then(data=>{
+    if (data.status=200){
+      document.getElementById("project-title").textContent = title.trim();
+      document.getElementById("cancel-modal-edit").click();}
+  });
 });
