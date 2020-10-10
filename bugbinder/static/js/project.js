@@ -87,3 +87,50 @@ document.querySelector("#edit-project-save").addEventListener("click", () => {
       document.getElementById("cancel-modal-edit").click();}
   });
 });
+
+
+
+document.querySelector("#search-dev").addEventListener("click", () => {
+  email = document.getElementById("dev-email").value;
+  if (email=="") return;
+  form = new FormData();
+  form.append("email", email);
+  fetch("/search_dev/", {
+    method: "POST",
+    body: form,
+  }).then(res=>res.json()).then(data=>{
+    if (data.status==200){
+      if(data.github == undefined) 
+      document.getElementById("dev-img").src =`/static/img/user.png`;
+      else
+      document.getElementById("dev-img").src =`https://github.com/${data.github}.png`;
+      document.getElementById("dev-name").textContent = data.name;
+      document.getElementById("dev-preview").style.display = "block";
+      document.getElementById("username").value = data.username;
+    }
+    else{
+      document.getElementById("dev-email").classList.add("invalid");
+      document.getElementById("dev-preview").style.display = "none";
+    }
+
+  });
+
+});
+
+
+document.querySelector("#save-dev").addEventListener("click", () => {
+  username = document.getElementById("username").value;
+  project_id = document.getElementById('project-id').value;
+  form = new FormData();
+  form.append("dev_username", username);
+  form.append("project_id",project_id);
+  fetch("/save_dev/", {
+    method: "POST",
+    body: form,
+  }).then(res=>res.json()).then(data=>{
+    
+    if(data.status==200){
+      document.getElementById("cancel-modal-dev-add").click();
+    }
+  });
+});

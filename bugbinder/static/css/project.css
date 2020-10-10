@@ -77,6 +77,8 @@
 .dev-items {
   max-height: calc(100vh - 5rem);
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 #assign-dev {
   font-size: 1.6rem;

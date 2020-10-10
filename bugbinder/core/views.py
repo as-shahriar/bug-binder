@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Project, Task
 from django.db.models import Q
 from _auth.models import User
+from _profile.models import Profile
 from django.http import JsonResponse
 
 
@@ -102,7 +103,7 @@ def delete_project(request):
 @csrf_exempt
 def edit_project(request):
     if request.method == "POST":
-        if True:
+        try:
             id = request.POST.get('id')
             title = request.POST.get('title')
             description = request.POST.get('description')
@@ -113,8 +114,39 @@ def edit_project(request):
                 project.save()
                 return JsonResponse({'status': 200})
             return JsonResponse({'status': 403})
-        # except:
-        #     return JsonResponse({'status': 400})
+        except:
+            return JsonResponse({'status': 400})
+
+
+@login_required
+@csrf_exempt
+def search_dev(request):
+    if request.method == "POST":
+        try:
+            # if True:
+            email = request.POST.get('email')
+            user = User.objects.get(
+                Q(email=email) | Q(username=email)
+            )
+            profile = Profile.objects.get(user=user)
+            return JsonResponse({'name': profile.name, 'github': profile.github, 'username': user.username, 'status': 200})
+        except:
+            return JsonResponse({'status': 400})
+
+
+@login_required
+@csrf_exempt
+def save_dev(request):
+    if request.method == "POST":
+        try:
+            project_id = request.POST.get('project_id')
+            dev_username = request.POST.get('dev_username')
+            user = User.objects.get(username=dev_username)
+            project = Project.objects.get(id=project_id)
+            project.dev.add(user)
+            return JsonResponse({'status': 200})
+        except:
+            return JsonResponse({'status': 400})
 
 
 def issueView(request):

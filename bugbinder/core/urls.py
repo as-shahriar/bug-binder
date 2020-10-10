@@ -9,6 +9,8 @@ urlpatterns = [
     path('delete_task/', views.delete_task),
     path('delete_project/', views.delete_project),
     path('edit_project/', views.edit_project),
+    path("search_dev/", views.search_dev),
+    path("save_dev/", views.save_dev),
 
 
 ]

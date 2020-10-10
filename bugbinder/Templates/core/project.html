@@ -266,17 +266,17 @@ Dashboard{%endblock%} {%block css%}
       <div class="col s12 l12">
         <div class="input-field">
           <i class="material-icons prefix white-text">mail</i>
-          <input id="name1" type="text" class="validate white-text" />
-          <label for="name1" class="white-text">Email Address</label>
+          <input id="dev-email" type="text" class="validate white-text" />
+          <label for="dev-email" class="white-text">Email or Username</label>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" id="dev-preview" style="display: none;">
       <div class="col s12">
         <div class="dev-preview">
-          <img src="https://avatars0.githubusercontent.com/u/34039975" /> Asif
-          Shahriar
-          <i class="fa fa-check" aria-hidden="true"></i>
+          <input type="hidden" id="username">
+          <img id="dev-img" src="" /> <span id="dev-name"></span>
+          <i class="fa fa-check" aria-hidden="true" id="save-dev"></i>
         </div>
       </div>
     </div>
@@ -285,8 +285,8 @@ Dashboard{%endblock%} {%block css%}
       class="row"
       style="display: flex; justify-content: flex-end; margin-bottom: 0"
     >
-      <a class="waves-effect waves-light btn red modal-close">Cancel</a>
-      <a class="waves-effect waves-light btn green" style="margin-left: 1rem"
+      <a id="cancel-modal-dev-add" class="waves-effect waves-light btn red modal-close">Cancel</a>
+      <a class="waves-effect waves-light btn green" style="margin-left: 1rem" id="search-dev"
         >Search</a
       >
     </div>
