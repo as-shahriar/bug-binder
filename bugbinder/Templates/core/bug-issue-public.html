@@ -1,5 +1,5 @@
 {%extends 'base.html'%}{% load static %} {%block title%}Bug Binder |
-Bug Issue{%endblock%} {%block css%}
+{{project.title}}{%endblock%} {%block css%}
 
 <link rel="stylesheet" href="{% static 'css/bug-issue.css'%}" />
 {%endblock%}
@@ -8,20 +8,23 @@ Bug Issue{%endblock%} {%block css%}
 {%block body%}
 <div class="container-div">
   <div class="box">
-    <h5>Bug Issue</h5>
+    <h5>{{project.title}}</h5>
     <div class="box-body">
-      <div class="row">
-        <div class="col s12 m12 l12">
-          <select id="select" autocomplete="off">
-            <option value="" disabled selected>Select Project</option>
-            {%for project in projects%}
-          <option value="{{project.id}}">{{project.title}}</option>
-  {%endfor%}
-        </select></div>
-      </div>
+      <p>
+        {{project.description}}
+      </p>
     </div>
   </div>
-  <div class="box bug">
+
+  <div class="box" id="msg" style="display: none; margin-top: 3rem;">
+    <h5>Success!!!</h5>
+    <div class="box-body">
+      <p align="center">
+        We received your report. We will cantact you soon.
+      </p>
+    </div>
+  </div>
+  <div class="box bug" id="bug-report">
     <h5>Report a bug</h5>
     <div class="box-body fields">
     
@@ -55,7 +58,16 @@ Bug Issue{%endblock%} {%block css%}
           <label for="comment" class="white-text">Comment</label>
         </div>
       </div>
-      
+      <div class="row">
+        <div class="col s12 l12">
+          <div class="input-field">
+            <i class="material-icons prefix white-text">font_download</i>
+            <input id="email" type="text" class="validate white-text" autocomplete="off"/>
+            <label for="email" class="white-text">Email Address</label>
+          </div>
+        </div>
+      </div>
+    
       <div class="row">
         <div style="display: flex; justify-content: flex-end">
          
@@ -65,7 +77,8 @@ Bug Issue{%endblock%} {%block css%}
     </div>
   </div>
 </div>
+<input type="hidden" value="{{project.id}}" id="project-id">
 {%endblock%}
 {%block script%}
-<script src="{%static 'js/bug.js'%}"></script>
+<script src="{%static 'js/bug-public.js'%}"></script>
 {%endblock%}

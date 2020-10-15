@@ -31,6 +31,8 @@ class Task(models.Model):
     done = models.BooleanField(default=False)
     assigned = models.BooleanField(default=False)
     date = models.DateField(auto_now_add=True)
+    project = models.ForeignKey(
+        Project, on_delete=models.SET_NULL, related_name="project_id", null=True, blank=True)
 
     def __str__(self):
         return self.title

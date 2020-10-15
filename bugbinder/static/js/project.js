@@ -204,3 +204,13 @@ function remove_event(e){
   } 
 
 }
+
+document.getElementById("copy-btn").addEventListener("click",()=>{
+    dummy = document.createElement("input"),
+    document.body.appendChild(dummy);
+    dummy.value = `http://127.0.0.1:8000/issue/public/${document.getElementById('project-id').value}`;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+  
+});

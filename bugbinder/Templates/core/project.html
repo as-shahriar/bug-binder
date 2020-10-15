@@ -47,6 +47,11 @@
       </div>
     </div>
 
+    <div><h6>Copy bug issue URL for public 
+      <i class="material-icons" id="copy-btn">content_copy</i>
+                </h6></div>
+    
+
     {% for task in project.task.all %}
 
     <!-- post -->
@@ -69,7 +74,7 @@
         <p><b>Environment: </b><br>{{task.environment}}</p>
         {%endif%}
         {%if task.email%}
-        <p><b>Submitted By: </b><br>{{task.email}}</p>
+        <p><b>Email: </b><br>{{task.email}}</p>
         {%endif%}
         {%if task.comment%}
         <p><b>Comment: </b><br>{{task.comment}}</p>

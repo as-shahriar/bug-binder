@@ -31,12 +31,10 @@ Tasks{%endblock%} {%block css%}
   {% for task in tasks%}
   {%if not task.done%}
   <div class="box">
-    {%for project in projects%}
-    {%if task in project.task.all %}
     <input type="hidden" id="project-id" value="{{project.id}}">
-    <a href="{% url 'project' project.id %}" target="_blank"><h5>{{project.title}}</h5></a>
-    {%endif%}
-    {%endfor%}
+   
+    <a href="{% url 'project' task.project.id %}" target="_blank"><h5>{{task.project.title}}</h5></a>
+    
     <div class="box-body" style="padding: 1.5rem">
       <h6>{{task.title}}</h6>
       {%if task.reproduce%}
@@ -46,7 +44,7 @@ Tasks{%endblock%} {%block css%}
       <p><b>Environment: </b><br>{{task.environment}}</p>
       {%endif%}
       {%if task.email%}
-      <p><b>Submitted By: </b><br>{{task.email}}</p>
+      <p><b>Email: </b><br>{{task.email}}</p>
       {%endif%}
       {%if task.comment%}
       <p><b>Comment: </b><br>{{task.comment}}</p>
@@ -78,7 +76,7 @@ Tasks{%endblock%} {%block css%}
       {%endif%}
     </div>
   </div>
-  {%endif%}
+   {%endif%}
   {%endfor%}
   
 </div>

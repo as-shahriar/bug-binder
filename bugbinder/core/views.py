@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -173,8 +173,58 @@ def remove_dev(request):
             return JsonResponse({'status': 400})
 
 
+@login_required
+@csrf_exempt
 def issueView(request):
-    return render(request, 'core/bug-issue.html', {'task_count': count_task(request)})
+    if request.method == "POST":
+        project_id = request.POST.get("project_id")
+        title = request.POST.get("title")
+        reproduce = request.POST.get("reproduce")
+        environment = request.POST.get("environment")
+        comment = request.POST.get("comment")
+
+        project = Project.objects.get(id=project_id)
+        task = Task()
+        task.title = title
+        task.reproduce = reproduce
+        task.environment = environment
+        task.comment = comment
+        task.project = project
+        task.save()
+        project.task.add(task)
+        return JsonResponse({"status": 200})
+
+    projects = Project.objects.filter(
+        Q(owner=request.user) | Q(dev__in=[request.user])
+    ).distinct()
+    return render(request, 'core/bug-issue.html', {'task_count': count_task(request), 'projects': projects})
+
+
+@csrf_exempt
+def publicissueView(request, id):
+    project = get_object_or_404(Project, id=id)
+    if request.method == "POST":
+        try:
+            email = request.POST.get("email")
+            title = request.POST.get("title")
+            reproduce = request.POST.get("reproduce")
+            environment = request.POST.get("environment")
+            comment = request.POST.get("comment")
+
+            task = Task()
+            task.title = title
+            task.reproduce = reproduce
+            task.environment = environment
+            task.comment = comment
+            task.project = project
+            task.email = email
+            task.save()
+            project.task.add(task)
+            return JsonResponse({"status": 200})
+        except:
+            return JsonResponse({"status": 400})
+
+    return render(request, 'core/bug-issue-public.html', {"project": project, 'task_count': count_task(request)})
 
 
 @csrf_exempt
@@ -196,5 +246,7 @@ def taskView(request):
 
 
 def count_task(request):
-    tasks = Task.objects.filter(Q(dev=request.user), Q(done=False))
-    return tasks.count()
+    if request.user.is_authenticated:
+        tasks = Task.objects.filter(Q(dev=request.user), Q(done=False))
+        return tasks.count()
+    return None

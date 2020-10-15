@@ -12,6 +12,7 @@ urlpatterns = [
     path("search_dev/", views.search_dev),
     path("save_dev/", views.save_dev),
     path("remove_dev/", views.remove_dev),
+    path("issue/public/<int:id>", views.publicissueView),
 
 
 ]

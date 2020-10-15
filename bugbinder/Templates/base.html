@@ -50,7 +50,8 @@
       {%if not request.user.is_authenticated%}
       <a href="{% url 'home' %}"
         ><li><i class="material-icons"></i>Login or Signup</li></a
-      >{%endif%}
+      >
+      {%else%}
       <a href="{% url 'dashboard' %}"
         ><li><i class="material-icons">dashboard</i>Dashboard</li></a
       >
@@ -66,8 +67,9 @@
       <a href="#"
         ><li><i class="material-icons">exit_to_app</i>Logout</li></a
       >
+      {%endif%}
     </ul>
-
+    
     <div class="main">
       <div class="left">
         <div class="left-div">
@@ -83,7 +85,7 @@
               ><li>
                 <i class="material-icons">exit_to_app</i>Login or Signup
               </li></a
-            >{%endif%}
+            > {%else%}
             <a href="{% url 'dashboard' %}"
               ><li><i class="material-icons">dashboard</i>Dashboard</li></a
             >
@@ -109,7 +111,7 @@
             >
             <a href="{%url 'logout'%}"
               ><li><i class="material-icons">exit_to_app</i>Logout</li></a
-            >
+            >{%endif%} 
           </ul>
         </div>
       </div>

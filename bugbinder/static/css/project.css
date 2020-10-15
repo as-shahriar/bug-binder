@@ -134,6 +134,17 @@
   padding: 0.5rem;
 }
 
+#copy-btn {
+  cursor: pointer;
+  margin-left: 6px;
+  user-select: none;
+}
+
+#copy-btn:active {
+  transform: scale(0.8);
+  transform: translateY(1);
+}
+
 @media (max-width: 810px) {
   .left-section {
     width: 100%;
