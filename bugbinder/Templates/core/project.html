@@ -117,26 +117,31 @@ Dashboard{%endblock%} {%block css%}
       </a>
       {%endif%}
     </div>
-    <div class="box-body dev-items">
+    <div class="box-body dev-items" id="d-dev-add-root">
       {% for dev in project.dev.all %}
-      <div class="dev-item">
-        <div>
+      
+      <div class="dev-item" id="d-dev-item-{{dev.id}}">
+        <a href="{%url 'view_profile' dev.username %}" target="_blank" >
           <i
             class="fa fa-code"
             aria-hidden="true"
-            style="margin-right: 0.5rem"
           ></i>
-          {{dev.username}}
-        </div>
+          <span id="dev-username-d{{dev.id}}">{{dev.username}}</span>
+          
+        </a>
         {%if request.user == project.owner%}
+        {% if dev.id != request.user.id %}
         <i
-          class="fa fa-trash"
+          class="fa fa-trash delete-dev"
+          data-did="{{dev.id}}"
           aria-hidden="true"
           style="margin-left: 0.8rem"
-          id="delete-dev"
+          
         ></i
         >{%endif%}
+        {%endif%}
       </div>
+     
       {%endfor%}
     </div>
   </div>
@@ -158,25 +163,28 @@ Dashboard{%endblock%} {%block css%}
       {%endif%}
     </div>
 
-    <div class="dev-items" style="max-height: 100%; overflow-y: visible">
+    <div class="dev-items" id="m-dev-add-root" style="max-height: 100%; overflow-y: visible">
       {% for dev in project.dev.all %}
-      <div class="dev-item">
-        <div>
+      <div class="dev-item" id="m-dev-item-{{dev.id}}">
+        <a href="{%url 'view_profile' dev.username %}" target="_blank" >
           <i
             class="fa fa-code"
             aria-hidden="true"
-            style="margin-right: 0.5rem"
           ></i>
-          {{dev.username}}
-        </div>
+          <span id="dev-username-m{{dev.id}}">{{dev.username}}</span>
+          
+        </a>
         {%if request.user == project.owner%}
+        {% if dev.id != request.user.id %}
         <i
-          class="fa fa-trash"
+          class="fa fa-trash delete-dev"
+          data-did="{{dev.id}}"
           aria-hidden="true"
           style="margin-left: 0.8rem"
-          id="delete-dev"
+          
         ></i
         >{%endif%}
+        {%endif%}
       </div>
       {%endfor%}
     </div>

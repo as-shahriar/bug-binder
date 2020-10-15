@@ -11,6 +11,7 @@ urlpatterns = [
     path('edit_project/', views.edit_project),
     path("search_dev/", views.search_dev),
     path("save_dev/", views.save_dev),
+    path("remove_dev/", views.remove_dev),
 
 
 ]

@@ -138,13 +138,37 @@ def search_dev(request):
 @csrf_exempt
 def save_dev(request):
     if request.method == "POST":
-        try:
+        # try:
+        if True:
             project_id = request.POST.get('project_id')
             dev_username = request.POST.get('dev_username')
+
             user = User.objects.get(username=dev_username)
             project = Project.objects.get(id=project_id)
-            project.dev.add(user)
-            return JsonResponse({'status': 200})
+            if project.owner == request.user:
+                if user in project.dev.all():
+                    return JsonResponse({'status': 403})
+                project.dev.add(user)
+                return JsonResponse({'user_id': user.id, 'status': 200})
+            raise ValueError
+        # except:
+        #     return JsonResponse({'status': 400})
+
+
+@login_required
+@csrf_exempt
+def remove_dev(request):
+    if request.method == "POST":
+        project_id = request.POST.get('project_id')
+        dev_id = request.POST.get('dev_id')
+
+        try:
+            user = User.objects.get(id=dev_id)
+            project = Project.objects.get(id=project_id)
+            if project.owner == request.user:
+                project.dev.remove(user)
+                return JsonResponse({'status': 200})
+            raise ValueError
         except:
             return JsonResponse({'status': 400})
 

@@ -128,9 +128,79 @@ document.querySelector("#save-dev").addEventListener("click", () => {
     method: "POST",
     body: form,
   }).then(res=>res.json()).then(data=>{
-    
     if(data.status==200){
+      
       document.getElementById("cancel-modal-dev-add").click();
+      add_dev_component(data.user_id,username,"d"); //add in desktop
+      add_dev_component(data.user_id,username,"m"); //add in mobile
     }
+    else if(data.status==403)document.getElementById("cancel-modal-dev-add").click();
   });
 });
+
+
+
+document.querySelectorAll(".delete-dev").forEach(e=>{
+    
+      e.addEventListener("click",()=>{
+        remove_event(e);
+      });
+});
+
+
+function add_dev_component(id,username,version){
+  div1 = document.createElement("div")
+  div1.setAttribute("class","dev-item")
+  div1.setAttribute("id",`${version}-dev-item-${id}`)
+  a =  document.createElement("a")
+  a.setAttribute("href",`/u/${username}`)
+  a.setAttribute("target","_blank")
+  i = document.createElement("i")
+  i.setAttribute("class","fa fa-code")
+  span = document.createElement("span")
+  span.textContent = username
+  span.setAttribute("id",`dev-username-${version}${id}`)
+  i2 = document.createElement("i")
+  i2.setAttribute("class","fa fa-trash delete-dev")
+  i2.setAttribute("data-did",id)
+  i2.setAttribute("style","margin-left: 0.8rem")
+  
+
+  a.appendChild(i)
+  a.appendChild(span)
+  div1.appendChild(a)
+  div1.appendChild(i2)
+ 
+  document.querySelector(`#${version}-dev-add-root`).prepend(div1)
+  i2.addEventListener("click",()=>remove_event(i2))
+}
+
+
+function remove_event(e){
+  project_id = document.getElementById('project-id').value;
+  id = e.getAttribute("data-did")
+  dusername = document.querySelector(`#dev-username-d${id}`)
+  musername = document.querySelector(`#dev-username-m${id}`)
+
+  username = (dusername)?dusername.textContent:musername.textContent;
+
+  
+  var r = confirm(`Remove ${username} from the dev list?`)
+  if (r == true) {
+    form = new FormData()
+    form.append("dev_id",id)
+    form.append("project_id",project_id)
+    fetch('/remove_dev/',{
+      method:"POST"
+      ,body:form
+    }).then(res=>res.json()).then(data=>{
+        
+        if (data.status==200){
+          document.querySelector(`#d-dev-item-${id}`).remove()
+          document.querySelector(`#m-dev-item-${id}`).remove()
+        }
+    });
+    
+  } 
+
+}
