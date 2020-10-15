@@ -6,6 +6,7 @@ from .models import Profile
 from _auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
+from core.views import count_task
 
 
 @login_required
@@ -44,7 +45,7 @@ def profileView(request):
         except:
             return JsonResponse({'status': 403})
 
-    return render(request, 'core/profile.html', {"profile": profile})
+    return render(request, 'core/profile.html', {"profile": profile, 'task_count': count_task(request)})
 
 
 @login_required
@@ -53,7 +54,7 @@ def userView(request, username):
     try:
         profile = get_object_or_404(
             Profile, user=get_object_or_404(User, username=username))
-        return render(request, 'core/user.html', {"profile": profile})
+        return render(request, 'core/user.html', {"profile": profile, 'task_count': count_task(request)})
     except:
         return redirect("/dashboard/")
 

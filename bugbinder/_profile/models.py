@@ -9,3 +9,4 @@ class Profile(models.Model):
     office = models.CharField(max_length=100, null=True, blank=True)
     github = models.CharField(max_length=100, null=True, blank=True)
     linkedin = models.CharField(max_length=100, null=True, blank=True)
+    fixed = models.PositiveIntegerField(default=0)

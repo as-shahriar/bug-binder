@@ -10,7 +10,7 @@ Profile{%endblock%} {%block css%}
     <div class="top-section">
       <div>
         <i class="material-icons">account_circle</i>
-        <h6 style="margin: 0; margin-left: 0.3rem">asifo1</h6>
+        <h6 style="margin: 0; margin-left: 0.3rem">{{request.user.username}}</h6>
       </div>
       <div>
         <a
@@ -71,11 +71,9 @@ Profile{%endblock%} {%block css%}
             <span id="office">{{profile.office}}</span
             ><i class="fa fa-building" aria-hidden="true"></i>
           </div>
-          <div class="info-field" title="Assined bugs">
-            215 Assigned<i class="fa fa-bug" aria-hidden="true"></i>
-          </div>
+         
           <div class="info-field" title="Fixed bugs">
-            214 Fixed<i class="fa fa-bug" aria-hidden="true"></i>
+            {{profile.fixed}} Fixed<i class="fa fa-bug" aria-hidden="true"></i>
           </div>
         </div>
       </div>

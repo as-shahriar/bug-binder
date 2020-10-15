@@ -1,5 +1,5 @@
 {%extends 'base.html'%}{% load static %} {%block title%}Bug Binder |
-Dashboard{%endblock%} {%block css%}
+{{profile.user.username}}{%endblock%} {%block css%}
 <link rel="stylesheet" href="{% static 'css/user.css'%}" /> {%endblock%}
 
 <!--  -->
@@ -39,20 +39,20 @@ Dashboard{%endblock%} {%block css%}
               aria-hidden="true"
             ></i>
           </div>
+          {%if profile.mobile %}
           <div class="info-field">
             {{profile.mobile}}<i
               class="fa fa-phone-square"
               aria-hidden="true"
             ></i>
-          </div>
+          </div>  {%endif%}
+          {%if profile.office %}
           <div class="info-field">
             {{profile.office}}<i class="fa fa-building" aria-hidden="true"></i>
           </div>
-          <div class="info-field" title="Assined bugs">
-            215 Assigned<i class="fa fa-bug" aria-hidden="true"></i>
-          </div>
+          {%endif%}
           <div class="info-field" title="Fixed bugs">
-            214 Fixed<i class="fa fa-bug" aria-hidden="true"></i>
+            {{profile.fixed}} Fixed<i class="fa fa-bug" aria-hidden="true"></i>
           </div>
         </div>
       </div>

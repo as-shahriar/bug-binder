@@ -235,7 +235,7 @@ def publicissueView(request, id):
 @login_required
 def taskView(request):
     tasks = Task.objects.filter(dev=request.user)
-
+    profile = Profile.objects.get(user=request.user)
     if request.method == "POST":
         task_id = request.POST.get('task_id')
         solution = request.POST.get('solution')
@@ -244,10 +244,12 @@ def taskView(request):
         task.assigned = False
         task.done = True
         task.save()
+        profile.fixed = profile.fixed + 1
+        profile.save()
         cout_update(task.project, fixed=True)
         return JsonResponse({"status": 200})
 
-    return render(request, 'core/task.html', {"tasks": tasks, 'task_count': count_task(request)})
+    return render(request, 'core/task.html', {"tasks": tasks, 'task_count': count_task(request), "fixed_task": profile.fixed})
 
 
 def count_task(request):

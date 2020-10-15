@@ -59,7 +59,7 @@
         ><li><i class="material-icons">bug_report</i>Bug Issue</li></a
       >
       <a href="{% url 'profile' %}"
-        ><li><i class="material-icons">account_circle</i>Asif Shahriar</li></a
+        ><li><i class="material-icons">account_circle</i>{{request.user.username}}</li></a
       >
       <a href="{% url 'task' %}"
         ><li><i class="material-icons">details</i>Tasks</li></a
@@ -94,7 +94,7 @@
             >
             <a href="{% url 'profile' %}"
               ><li>
-                <i class="material-icons">account_circle</i>Asif Shahriar
+                <i class="material-icons">account_circle</i>{{request.user.username}}
               </li></a
             >
 
