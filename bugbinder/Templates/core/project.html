@@ -1,5 +1,5 @@
 {%extends 'base.html'%}{% load static %} {%block title%}Bug Binder |
-Dashboard{%endblock%} {%block css%}
+{{project.title}}{%endblock%} {%block css%}
 
 <link rel="stylesheet" href="{% static 'css/bug-issue.css'%}" />
 <link rel="stylesheet" href="{% static 'css/project.css'%}" />
@@ -48,6 +48,7 @@ Dashboard{%endblock%} {%block css%}
     </div>
 
     {% for task in project.task.all %}
+
     <!-- post -->
     <div class="box bug post" id="post-{{task.id}}">
       <div class="box-head">
@@ -61,12 +62,38 @@ Dashboard{%endblock%} {%block css%}
       <div class="box-body">
         <h6>{{task.title}}</h6>
 
-        <p><b>Steps to reproduce: </b><br />{{task.reproduce}}</p>
-        <p><b>Environment: </b><br />{{task.environment}}</p>
-
-        <p><b>Submitted By: </b>{{task.email}}</p>
-        <p><b>Comment: </b><br />{{task.comment}}</p>
-        {%if task.assigned%}
+        {%if task.reproduce%}
+        <p><b>Steps to reproduce: </b><br>{{task.reproduce}}</p>
+        {%endif%}
+        {%if task.environment %}
+        <p><b>Environment: </b><br>{{task.environment}}</p>
+        {%endif%}
+        {%if task.email%}
+        <p><b>Submitted By: </b><br>{{task.email}}</p>
+        {%endif%}
+        {%if task.comment%}
+        <p><b>Comment: </b><br>{{task.comment}}</p>
+        {%endif%}
+        {%if task.solution%}
+        <p><b>Solution:</b> <br>{{task.solution}}</p>
+        {%endif%}
+        {% if task.done%}
+        <p>
+          <i
+            class="fa fa-code"
+            aria-hidden="true"
+            style="margin-right: 0.5rem"
+          ></i>
+          Submitted by
+          <a
+            target="_blank"
+            href="{% url 'view_profile' task.dev %}"
+            class="white-text"
+          >
+            <b>{{task.dev}}</b></a
+          >
+        </p>
+        {%elif task.assigned%}
         <p>
           <i
             class="fa fa-code"

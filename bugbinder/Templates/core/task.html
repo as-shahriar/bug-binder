@@ -1,5 +1,5 @@
 {%extends 'base.html'%}{% load static %} {%block title%}Bug Binder |
-Dashboard{%endblock%} {%block css%}
+Tasks{%endblock%} {%block css%}
 
 <link rel="stylesheet" href="{% static 'css/bug-issue.css'%}" />
 <link rel="stylesheet" href="{% static 'css/task.css'%}" />
@@ -27,50 +27,63 @@ Dashboard{%endblock%} {%block css%}
       </div>
     </div>
   </div>
-  <div class="box">
-    <h5>Project Name</h5>
-    <div class="box-body" style="padding: 1.5rem">
-      <h6>Title here</h6>
-      <p>
-        Lorem ipsum dolorl Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Sequi sapiente exercitationem, architecto magnam excepturi
-        accusantium sit quidem libero porro id? Aliquid eum nulla, libero
-        pariatur vitae saepe! Nisi, reiciendis molestiae.
-      </p>
-      <p><b>Steps to reproduce: </b></p>
-      <p><b>Environment: </b></p>
 
-      <a href="#" class="white-text">
-        <i class="fa fa-picture-o" aria-hidden="true"></i> Picture
-      </a>
-      <p><b>Submitted By: </b></p>
-      <p><b>Comment: </b></p>
+  {% for task in tasks%}
+  {%if not task.done%}
+  <div class="box">
+    {%for project in projects%}
+    {%if task in project.task.all %}
+    <input type="hidden" id="project-id" value="{{project.id}}">
+    <a href="{% url 'project' project.id %}" target="_blank"><h5>{{project.title}}</h5></a>
+    {%endif%}
+    {%endfor%}
+    <div class="box-body" style="padding: 1.5rem">
+      <h6>{{task.title}}</h6>
+      {%if task.reproduce%}
+      <p><b>Steps to reproduce: </b><br>{{task.reproduce}}</p>
+      {%endif%}
+      {%if task.environment %}
+      <p><b>Environment: </b><br>{{task.environment}}</p>
+      {%endif%}
+      {%if task.email%}
+      <p><b>Submitted By: </b><br>{{task.email}}</p>
+      {%endif%}
+      {%if task.comment%}
+      <p><b>Comment: </b><br>{{task.comment}}</p>
+      {%endif%}
+      {%if task.done%}
       <p>
-        Accespt
+        Submitted
         <i
-          class="fa fa-check mgreen"
+          class="fa fa-check"
           aria-hidden="true"
-          style="font-size: 1.5rem; cursor: pointer"
+          style="font-size: 1.5rem;"
         ></i>
       </p>
+    {%else%}
       <div class="row">
         <div class="input-field col s10">
-          <textarea id="textarea1" class="materialize-textarea"></textarea>
+          <textarea id="solution-{{task.id}}" class="materialize-textarea"></textarea>
           <label for="textarea1" class="white-text">Solution</label>
         </div>
         <div class="col s1">
           <i
-            class="fa fa-paper-plane mgreen"
+          data-id="{{task.id}}"
+            class="fa fa-paper-plane mgreen submit"
             aria-hidden="true"
             style="font-size: 1.5rem; cursor: pointer; margin-top: 17px"
           ></i>
         </div>
       </div>
+      {%endif%}
     </div>
   </div>
-  <div class="progress" style="margin: 2.5rem 0">
-    <div class="indeterminate"></div>
-  </div>
+  {%endif%}
+  {%endfor%}
+  
 </div>
 
+{%endblock%}
+{%block script%}
+<script src="{%static 'js/task.js'%}"></script>
 {%endblock%}

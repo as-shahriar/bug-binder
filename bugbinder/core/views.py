@@ -22,10 +22,10 @@ def dashboard(request):
         return redirect("project", id=project.id)
     projects = Project.objects.filter(
         Q(owner=request.user) | Q(dev__in=[request.user])
-    )
+    ).distinct()
 
     context = {
-        'projects': projects
+        'projects': projects, 'task_count': count_task(request)
     }
     return render(request, 'core/dashboard.html', context)
 
@@ -42,7 +42,7 @@ def projectView(request, id):
         project.title = title
         project.description = description
         project.save()
-    return render(request, 'core/project.html', {"project": project})
+    return render(request, 'core/project.html', {"project": project, 'task_count': count_task(request)})
 
 
 @login_required
@@ -174,8 +174,27 @@ def remove_dev(request):
 
 
 def issueView(request):
-    return render(request, 'core/bug-issue.html')
+    return render(request, 'core/bug-issue.html', {'task_count': count_task(request)})
 
 
+@csrf_exempt
+@login_required
 def taskView(request):
-    return render(request, 'core/task.html')
+    tasks = Task.objects.filter(dev=request.user)
+    projects = Project.objects.filter(task__in=tasks)
+    if request.method == "POST":
+        task_id = request.POST.get('task_id')
+        solution = request.POST.get('solution')
+        task = Task.objects.get(id=task_id)
+        task.solution = solution
+        task.assigned = False
+        task.done = True
+        task.save()
+        return JsonResponse({"status": 200})
+
+    return render(request, 'core/task.html', {"tasks": tasks, "projects": projects, 'task_count': count_task(request)})
+
+
+def count_task(request):
+    tasks = Task.objects.filter(Q(dev=request.user), Q(done=False))
+    return tasks.count()

@@ -21,12 +21,13 @@ class Task(models.Model):
     class Meta:
         ordering = ['assigned', '-date']
     title = models.CharField(max_length=300)
+    dev = models.ForeignKey(User, null=True, blank=True,
+                            on_delete=models.SET_NULL)
     reproduce = models.CharField(max_length=1000, null=True, blank=True)
     environment = models.CharField(max_length=1000, null=True, blank=True)
     comment = models.CharField(max_length=1000, null=True, blank=True)
     email = models.CharField(max_length=100, null=True, blank=True)
-    dev = models.ForeignKey(User, null=True, blank=True,
-                            on_delete=models.SET_NULL)
+    solution = models.CharField(max_length=5000, null=True, blank=True)
     done = models.BooleanField(default=False)
     assigned = models.BooleanField(default=False)
     date = models.DateField(auto_now_add=True)

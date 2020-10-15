@@ -98,11 +98,13 @@
 
             <a href="{% url 'task' %}"
               ><li>
-                <i class="material-icons">details</i>Tasks<span
+                <i class="material-icons">details</i>Tasks
+                {%if task_count != 0 %}
+                <span
                   class="white-text badge"
                   style="background-color: #3282b8; border-radius: 4px"
-                  >5</span
-                >
+                  >{{task_count}}</span
+                >{%endif%}
               </li></a
             >
             <a href="{%url 'logout'%}"
