@@ -31,7 +31,7 @@ Tasks{%endblock%} {%block css%}
   {% for task in tasks%}
   {%if not task.done%}
   <div class="box">
-    <input type="hidden" id="project-id" value="{{project.id}}">
+    <input type="hidden" id="project-id" value="{{task.project.id}}">
    
     <a href="{% url 'project' task.project.id %}" target="_blank"><h5>{{task.project.title}}</h5></a>
     

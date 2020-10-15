@@ -58,8 +58,8 @@
     <div class="box bug post" id="post-{{task.id}}">
       <div class="box-head">
         <h5>{{task.date}}</h5>
-        {%if request.user == project.owner%}
-        <h5 id="edit-project" class="delete-btn" data-id="{{task.id}}">
+        {%if request.user == project.owner and not task.done and not task.assigned %}
+        <h5  class="delete-btn" data-id="{{task.id}}" id="delete-task-{{task.id}}">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </h5>
         {%endif%}

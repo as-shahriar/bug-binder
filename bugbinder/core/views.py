@@ -58,9 +58,9 @@ def assign(request):
             if request.user == project.owner or request.user == user:
                 task.dev = user
                 task.assigned = True
-                project.assigned = project.assigned + 1
                 task.save()
                 project.save()
+                cout_update(project, assigend=True)
                 return JsonResponse({'status': 200})
             raise ValueError
 
@@ -75,9 +75,11 @@ def delete_task(request):
         try:
             id = request.POST.get('id')
             task = Task.objects.get(id=id)
-            project = Project.objects.get(task__in=[task])
+            project = task.project
             if request.user == project.owner:
                 task.delete()
+                project.bugs = project.bugs - 1
+                project.save()
                 return JsonResponse({'status': 200})
             return JsonResponse({'status': 403})
         except:
@@ -192,6 +194,7 @@ def issueView(request):
         task.project = project
         task.save()
         project.task.add(task)
+        cout_update(project, bug=True)
         return JsonResponse({"status": 200})
 
     projects = Project.objects.filter(
@@ -220,6 +223,7 @@ def publicissueView(request, id):
             task.email = email
             task.save()
             project.task.add(task)
+            cout_update(project, bug=True)
             return JsonResponse({"status": 200})
         except:
             return JsonResponse({"status": 400})
@@ -231,7 +235,7 @@ def publicissueView(request, id):
 @login_required
 def taskView(request):
     tasks = Task.objects.filter(dev=request.user)
-    projects = Project.objects.filter(task__in=tasks)
+
     if request.method == "POST":
         task_id = request.POST.get('task_id')
         solution = request.POST.get('solution')
@@ -240,9 +244,10 @@ def taskView(request):
         task.assigned = False
         task.done = True
         task.save()
+        cout_update(task.project, fixed=True)
         return JsonResponse({"status": 200})
 
-    return render(request, 'core/task.html', {"tasks": tasks, "projects": projects, 'task_count': count_task(request)})
+    return render(request, 'core/task.html', {"tasks": tasks, 'task_count': count_task(request)})
 
 
 def count_task(request):
@@ -250,3 +255,15 @@ def count_task(request):
         tasks = Task.objects.filter(Q(dev=request.user), Q(done=False))
         return tasks.count()
     return None
+
+
+def cout_update(project, bug=False, assigend=False, fixed=False):
+    if bug:
+        project.bugs = project.bugs+1
+    elif assigend:
+        project.bugs = project.bugs - 1
+        project.assigned = project.assigned + 1
+    elif fixed:
+        project.assigned = project.assigned - 1
+        project.fixed = project.fixed + 1
+    project.save()

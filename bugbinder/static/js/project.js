@@ -34,6 +34,14 @@ document.querySelectorAll(".assign-btn").forEach((e) => {
           document.getElementById(`div-${id}`).appendChild(p);
           document.getElementById("assigned-c").textContent =
             parseInt(document.getElementById("assigned-c").textContent) + 1;
+
+            document.getElementById("bugs-c").textContent =
+            parseInt(document.getElementById("bugs-c").textContent) - 1;
+            previous_data = myChart.data.datasets[0].data
+            myChart.data.datasets[0].data=[previous_data[0]-1,previous_data[1]+1,previous_data[2]]
+            myChart.update()    
+            btn = document.getElementById(`delete-task-${id}`)
+            if (btn) btn.style.display="none"
         }
       });
   });
@@ -49,7 +57,12 @@ document.querySelectorAll(".delete-btn").forEach((e) => {
       body: form,
     }).then(res=>res.json()).then(data=>{
       if (data.status=200)
-      document.getElementById(`post-${id}`).innerHTML = "";
+      document.getElementById(`post-${id}`).remove()
+      previous_data = myChart.data.datasets[0].data
+            myChart.data.datasets[0].data=[previous_data[0]-1,previous_data[1],previous_data[2]]
+            myChart.update()  
+            document.getElementById("bugs-c").textContent =
+            parseInt(document.getElementById("bugs-c").textContent) - 1;
     });
   });
 });
