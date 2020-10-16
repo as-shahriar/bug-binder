@@ -146,12 +146,13 @@ document.querySelector("#save-dev").addEventListener("click", () => {
       document.getElementById("cancel-modal-dev-add").click();
       add_dev_component(data.user_id,username,"d"); //add in desktop
       add_dev_component(data.user_id,username,"m"); //add in mobile
+      clear_add_dev();
     }
     else if(data.status==403)document.getElementById("cancel-modal-dev-add").click();
   });
 });
 
-
+document.getElementById("cancel-modal-dev-add").addEventListener("click",()=> clear_add_dev());
 
 document.querySelectorAll(".delete-dev").forEach(e=>{
     
@@ -227,3 +228,12 @@ document.getElementById("copy-btn").addEventListener("click",()=>{
     document.body.removeChild(dummy);
   
 });
+
+
+
+function clear_add_dev(){
+  input = document.getElementById("dev-email");
+  preview = document.getElementById("dev-preview");
+  if(input) input.value="";
+  if (preview) preview.style.display = "none";
+}
