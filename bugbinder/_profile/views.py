@@ -73,3 +73,11 @@ def password_change(request):
                 login(request, user)
                 return JsonResponse({'status': 200})
         return JsonResponse({'status': 403})
+
+
+@csrf_exempt
+@login_required
+def delete_account(request):
+    if request.method == "POST":
+        request.user.delete()
+        return JsonResponse({"status": 200})

@@ -71,11 +71,18 @@ input[type="password"]:not(.browser-default):focus {
 }
 
 .box-background {
-  height: 364px;
+  height: 378px;
 }
+#delete-id {
+  font-size: 16px;
+  padding: 10px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
 @media (max-width: 750px) {
   .box-background {
-    height: 565px;
+    height: 584px;
   }
   #view-section {
     align-items: center;

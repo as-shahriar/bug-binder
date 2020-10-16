@@ -123,3 +123,13 @@ document.addEventListener("DOMContentLoaded", function () {
   var elems = document.querySelectorAll(".modal");
   var instances = M.Modal.init(elems);
 });
+
+
+document.getElementById("delete-id").addEventListener("click",()=>{
+  var r = confirm(`Delete your account?`)
+  if (r == true) {
+    fetch('/delete_account/',{method:"POST"}).then(res=>res.json()).then(data=>{
+      if(data.status==200) location.href="/"
+    });
+  }
+});
