@@ -18,7 +18,7 @@ Find all previous projects <b>[here.](https://github.com/asifo1/cs50w)</b>
 - `Main Directory`
   - `bugbinder` - Main application directory.
     - `_auth` - Authentication app with login, sign up and reset password.
-    - `_profile` - Profile app for maintaining prolife.
+    - `_profile` - Profile app for maintaining user's prolife.
     - `bugbinder` - Containes settings and main url file.
     - `core` - Core app for all functionalities like create project, assign task etc.
     - `static` - Holds all static files.
