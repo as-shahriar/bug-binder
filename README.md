@@ -14,6 +14,9 @@ Find all previous projects <b>[here.](https://github.com/asifo1/cs50w)</b>
 6. Developer's profile.
 7. Reset password using email.
 
+#### Installation with docker
+run `docker-compose up -d`
+
 #### Files & Directories
 
 - `Main Directory`
