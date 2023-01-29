@@ -15,7 +15,8 @@ Find all previous projects <b>[here.](https://github.com/asifo1/cs50w)</b>
 7. Reset password using email.
 
 #### Installation with docker
-run `docker-compose up -d`
+1. Run `docker-compose up -d`
+2. Check `127.0.0.1:8000` or `localhost:8000`
 
 #### Files & Directories
 
